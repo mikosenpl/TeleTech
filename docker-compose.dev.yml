@@ -1,0 +1,21 @@
+version: "3.8"
+
+networks:
+  client:
+      
+services:
+  client:
+    container_name: tele-tech_client
+    build:
+      dockerfile: Dockerfile.dev
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    ports:
+      - 3000:3000
+    volumes:
+      - ./:/home/node/ui
+    networks:
+      - client
+    depends_on:
+      - server
+    command: "npm start"
