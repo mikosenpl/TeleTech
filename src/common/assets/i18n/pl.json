@@ -1,0 +1,23 @@
+{
+  "sidebar": {
+    "home": "Oferty specjalne",
+    "internet": "Internet",
+    "television": "Telewizja",
+    "contract": "Abonament",
+    "decoder": "Dekoder 4K"
+  },
+  "offer": {
+    "check": "DODAJ",
+    "month": "mies.",
+    "internet+television": "Internet 600 Mb/s + Platynowy Pakiet TV",
+    "internet+contract": "Internet 600 Mb/s + Abonament",
+    "internet+television+decoder": "Internet 600 Mb/s + Platynowy Pakiet TV + Dekoder za DARMO",
+    "checkList": {
+      "first": "Internet 600 Mb/s",
+      "second": "139 kanałów TV",
+      "third": "91 kanałów w TV SMART GO",
+      "fourth": "Inteligentne Wi-Fi 6",
+      "fifth": "Dekoder TV Smart 4K BOX"
+    }
+  }
+}
