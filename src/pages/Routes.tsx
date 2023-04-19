@@ -10,6 +10,7 @@ import {
 import InternetOffersPage from './InternetOffersPage';
 import TelevisionOffersPage from './TelevisionOffersPage';
 import ContractOffersPage from './ContractOffersPage';
+import DecoderOffersPage from './DekoderOffersPage';
 
 const Routing = () => {
   return (
@@ -18,7 +19,7 @@ const Routing = () => {
       <Route path={INTERNET_PATH} element={<InternetOffersPage />} />
       <Route path={TELEVISION_PATH} element={<TelevisionOffersPage />} />
       <Route path={CONTRACT_PATH} element={<ContractOffersPage />} />
-      <Route path={DEKODER_PATH} element={<MainPage />} />
+      <Route path={DEKODER_PATH} element={<DecoderOffersPage />} />
       <Route path="*" element={<Navigate to={HOME_PATH} replace />} />
     </Routes>
   );

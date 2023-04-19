@@ -24,7 +24,26 @@ export const mockPriceOfService: Service[] = [
       },
     ],
   },
-
+  {
+    nameOfService: Services.TELEVISION,
+    pricePerYear: [
+      {
+        year: 2023,
+        price: 49,
+        currency: Currency.PLN,
+      },
+      {
+        year: 2024,
+        price: 49,
+        currency: Currency.PLN,
+      },
+      {
+        year: 2025,
+        price: 59,
+        currency: Currency.PLN,
+      },
+    ],
+  },
   {
     nameOfService: Services.CONTRACT,
     pricePerYear: [

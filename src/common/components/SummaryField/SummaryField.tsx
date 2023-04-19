@@ -1,4 +1,4 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
 import {
   SummaryButton,
@@ -11,22 +11,23 @@ import {
   SummaryPriceText,
   SummaryServiceNameText,
   SummaryText,
+  YearPicker,
 } from './SummaryField.styles';
-import { PricePerYear, Service } from '../../models/PriceOfService';
-import { useState } from 'react';
+import { Service } from '../../models/PriceOfService';
 import { DataView } from 'primereact/dataview';
 import { Button } from 'primereact/button';
 import { useTranslation } from 'react-i18next';
-import { Services } from '../../enums/Services';
-import { Promotion } from '../../models/Promotion';
-import {
-  mockPriceOfService,
-  mockPriceOfSpecialOfferServices,
-} from '../../mocks/priceList';
-import { hasPromotion } from '../../utils/sumUp';
+import { mockPriceOfSpecialOfferServices } from '../../mocks/priceList';
+import { calculateTheTotalPrice } from '../../utils/calculateTheTotalPrice';
+import { Year } from '../../enums/Years';
+import { setDisplayYear } from '../../store/slices/display/displaySlice';
 
 const SummaryField = () => {
   const { t } = useTranslation();
+  const dispatch = useDispatch();
+
+  const possiblyYearPicker = [Year._2023, Year._2024, Year._2025];
+
   const yearOffer: number = useSelector(
     (state: RootState) => state.display.year
   );
@@ -34,67 +35,10 @@ const SummaryField = () => {
     (state: RootState) => state.display.selectedServices
   );
 
-  hasPromotion(mockPriceOfService, 2023, mockPriceOfSpecialOfferServices);
-
-  const calculatePriceOfServices = (
-    services: Services[],
-    year: number,
-    promotions: Promotion[]
-  ) => {
-    let totalPrice = 0;
-    let discountApplied = false;
-
-    const getYearlyPrice = (
-      serviceName: Services
-    ): PricePerYear | undefined => {
-      const service = mockPriceOfService.find(
-        (s) => s.nameOfService === serviceName
-      );
-
-      if (!service) {
-        return undefined;
-      }
-
-      return service.pricePerYear.find((price) => price.year === year);
-    };
-
-    services.forEach((serviceName) => {
-      const yearlyPrice = getYearlyPrice(serviceName);
-
-      if (yearlyPrice) {
-        if (
-          serviceName === Services.DECODER &&
-          !services.includes(Services.TELEVISION)
-        ) {
-          return;
-        }
-
-        totalPrice += yearlyPrice.price;
-      }
-    });
-
-    promotions.forEach((promotion) => {
-      const intersection = services.filter((serviceName) =>
-        promotion.nameOfServices.includes(serviceName)
-      );
-
-      if (
-        intersection.length === promotion.nameOfServices.length &&
-        !discountApplied
-      ) {
-        const promotionPrice = promotion.promotionService.pricePerYear.find(
-          (price) => price.year === year
-        );
-
-        if (promotionPrice) {
-          totalPrice = promotionPrice.price;
-          discountApplied = true;
-        }
-      }
-    });
-
-    return totalPrice;
+  const handleChangeYear = (selectedYear: number) => {
+    dispatch(setDisplayYear(selectedYear));
   };
+
   const itemTemplate = (item: Service) => {
     const itemPrice = item.pricePerYear?.find(
       (item) => item.year === yearOffer
@@ -125,6 +69,13 @@ const SummaryField = () => {
   return (
     <SummaryFieldWrapper>
       <div>
+        <SummaryText>{t('offer.yearPicker')}</SummaryText>
+        <YearPicker
+          value={yearOffer}
+          onChange={(e) => handleChangeYear(e.value)}
+          options={possiblyYearPicker}
+          placeholder="Select a City"
+        />
         <SummaryText>{t('offer.summaryList.header')}</SummaryText>
         <DataView
           value={allSelectedService}
@@ -135,8 +86,8 @@ const SummaryField = () => {
       <SummaryButtonArea>
         <SummaryText>{t('offer.sumUp')}</SummaryText>
         <SummaryButton
-          label={calculatePriceOfServices(
-            [Services.INTERNET, Services.TELEVISION],
+          label={calculateTheTotalPrice(
+            allSelectedService,
             yearOffer,
             mockPriceOfSpecialOfferServices
           ).toString()}

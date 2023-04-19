@@ -1,9 +1,12 @@
 import { t } from 'i18next';
+import { useDispatch, useSelector } from 'react-redux';
 import { Services } from '../../enums/Services';
 import { mockCheckListContentService } from '../../mocks/checkListContentService';
 import { mockPriceOfService } from '../../mocks/priceList';
 import { Service } from '../../models/PriceOfService';
 import { CheckListContentServiceItem } from '../../models/checkListContentService';
+import { setDisplaySelectedService } from '../../store/slices/display/displaySlice';
+import { RootState } from '../../store/store';
 import {
   ServiceCardDescriptionText,
   ServiceCardPriceText,
@@ -12,19 +15,16 @@ import {
   ServiceCardCheckButton,
   ServiceCardWrapper,
   ServiceCardOffer,
-  ServiceDescriptionWrapper,
-  DescriptionServiceText,
-  ImageService,
-  ImageServiceWrapper,
   ServiceCardCheckListText,
+  ServiceDescriptionWrapper,
+  ImageServiceWrapper,
+  ImageService,
+  DescriptionServiceText,
 } from '../MainTemplate/MainTemplate.styles';
-import { InternetOffersWrapper } from './InternetOffers.styles';
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../store/store';
-import InternetImage from '../../assets/icons/internet.png';
-import { setDisplaySelectedService } from '../../store/slices/display/displaySlice';
+import { DekoderOffersWrapper } from './DecoderOffers.styles';
+import DecoderImage from '../../assets/icons/decoder.png';
 
-const InternetOffers = () => {
+const DecoderOffers = () => {
   const dispatch = useDispatch();
 
   const allSelectedService: Service[] = useSelector(
@@ -42,24 +42,24 @@ const InternetOffers = () => {
     (state: RootState) => state.display.year
   );
 
-  const InternetOfferService = mockPriceOfService.find(
-    (service) => service.nameOfService === Services.INTERNET
+  const DecoderOfferService = mockPriceOfService.find(
+    (service) => service.nameOfService === Services.DECODER
   );
 
-  const InternetOfferPerYear = InternetOfferService?.pricePerYear.find(
+  const DecoderOfferPerYear = DecoderOfferService?.pricePerYear.find(
     (item) => item.year === yearOffer
   );
 
-  const InternetOfferCheckList = mockCheckListContentService.find(
-    (checkList) => checkList.nameOfService === Services.INTERNET
+  const DecoderOfferCheckList = mockCheckListContentService.find(
+    (checkList) => checkList.nameOfService === Services.DECODER
   );
   const OfferCenterHeader = (
     <>
       <ServiceCardDescriptionText>
-        {t(`offer.${Services.INTERNET}`)}
+        {t(`offer.${Services.DECODER}`)}
       </ServiceCardDescriptionText>
       <ServiceCardPriceText>
-        {InternetOfferPerYear?.price} {InternetOfferPerYear?.currency}
+        {DecoderOfferPerYear?.price} {DecoderOfferPerYear?.currency}
       </ServiceCardPriceText>
       <ServiceCardCurrencyText>/{t('offer.month')}</ServiceCardCurrencyText>
     </>
@@ -71,16 +71,16 @@ const InternetOffers = () => {
         label={t('offer.check').toString()}
         icon="pi pi-chevron-right"
         iconPos="right"
-        onClick={() => handleCheckButtonClick(InternetOfferService)}
+        onClick={() => handleCheckButtonClick(DecoderOfferService)}
       />
     </ServiceCardFooter>
   );
 
   return (
-    <InternetOffersWrapper>
+    <DekoderOffersWrapper>
       <ServiceCardWrapper>
         <ServiceCardOffer footer={OfferCenterFooter} header={OfferCenterHeader}>
-          {InternetOfferCheckList?.list.map(
+          {DecoderOfferCheckList?.list.map(
             (menuItem: CheckListContentServiceItem) => {
               return (
                 <>
@@ -96,13 +96,14 @@ const InternetOffers = () => {
       </ServiceCardWrapper>
       <ServiceDescriptionWrapper>
         <ImageServiceWrapper>
-          <ImageService src={InternetImage} alt="Internet service" />
+          <ImageService src={DecoderImage} alt="decoder service" />
         </ImageServiceWrapper>
         <DescriptionServiceText>
-          {t('internet.serviceDescription')}
+          {t('decoder.serviceDescription')}
         </DescriptionServiceText>
       </ServiceDescriptionWrapper>
-    </InternetOffersWrapper>
+    </DekoderOffersWrapper>
   );
 };
-export default InternetOffers;
+
+export default DecoderOffers;

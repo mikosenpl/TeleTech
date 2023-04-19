@@ -1,9 +1,7 @@
-import { Services } from '../enums/Services';
-import { mockPriceOfSpecialOfferServices } from '../mocks/priceList';
 import { Service } from '../models/PriceOfService';
 import { Promotion } from '../models/Promotion';
 
-export const hasPromotion = (
+export const calculateTheTotalPrice = (
   services: Service[],
   year: number,
   promotionsList: Promotion[]
@@ -63,5 +61,5 @@ export const hasPromotion = (
       fullPrice += price;
     }
   }
-  console.log(fullPrice);
+  return fullPrice;
 };

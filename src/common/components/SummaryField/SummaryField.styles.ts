@@ -1,4 +1,5 @@
 import { Button } from 'primereact/button';
+import { Dropdown } from 'primereact/dropdown';
 import { PickList } from 'primereact/picklist';
 import styled from 'styled-components';
 
@@ -8,6 +9,8 @@ export const SummaryFieldWrapper = styled.div`
   display: flex;
   background-color: ${({ theme }) => theme.colors.contrast};
   flex-direction: column;
+  align-items: center;
+  text-align: center;
   justify-content: space-between;
 `;
 
@@ -16,8 +19,6 @@ export const SummaryButtonArea = styled.div`
   height: 25%;
   display: flex;
   flex-direction: column;
-  text-align: end;
-  justify-content: flex-end;
   padding: 1rem;
 `;
 
@@ -78,5 +79,20 @@ export const SummaryButton = styled(Button)`
 
   &:hover {
     background-color: ${({ theme }) => theme.colors.secondary} !important;
+  }
+`;
+
+export const YearPicker = styled(Dropdown)`
+  margin-top: 1rem;
+  background-color: ${({ theme }) => theme.colors.secondary};
+  font-weight: 700;
+  width: 50%;
+
+  .p-dropdown-label {
+    color: ${({ theme }) => theme.colors.contrast};
+    font-size: ${({ theme }) => theme.fontSize.xl};
+  }
+  .p-dropdown-trigger {
+    color: ${({ theme }) => theme.colors.contrast};
   }
 `;
