@@ -7,7 +7,8 @@
     "decoder": "Dekoder 4K"
   },
   "offer": {
-    "check": "DODAJ",
+    "check": "Dodaj do wybranych usług",
+    "order": "ZAMÓW",
     "month": "mies.",
     "internet+television": "Internet 600 Mb/s + Platynowy Pakiet TV",
     "internet+contract": "Internet 600 Mb/s + Abonament",
@@ -18,6 +19,14 @@
       "third": "91 kanałów w TV SMART GO",
       "fourth": "Inteligentne Wi-Fi 6",
       "fifth": "Dekoder TV Smart 4K BOX"
+    },
+    "sumUp": "Łącznie:",
+    "summaryList": {
+      "header": "Lista wybranych usług:",
+      "empty": "Aby dodac usługę, przejdź na podstronę z interesującą ofertą"
     }
+  },
+  "internet": {
+    "serviceDescription": "W naszej ofercie otrzymasz szybki Internet domowy dla użytkowników aktywnie korzystających z komputera i urządzeń mobilnych. W zależności od Twoich potrzeb i oczekiwanej szybkości, przygotowaliśmy trzy pakiety Internetu: do 300 Mb/s, do 600 Mb/s, oraz do 1,2 Gb/s. Pakiety dostępne są w dwóch opcjach: umowa na 12 miesięcy lub bez okresu zobowiązania.\n\nDzięki Internetowi światłowodowemu możesz przeglądać strony www i serwisy społecznościowe bez ograniczeń, swobodnie streamingować, oglądać filmy i słuchać muzyki w najwyższej jakości oraz rywalizować w grach online z graczami z całego świata. Dodatkowo to wszystko możesz robić jednocześnie na wielu urządzeniach (smartfonach, tabletach, komputerach, telewizorach czy konsolach). Im szybszy Internet, tym większa stabilność połączenia, mniej zakłóceń, możliwość podłączenia większej ilości urządzeń łączących się w tym samym czasie oraz większa przyjemność z wysokiej jakości usług.\n\nSzybki Internet światłowodowy to najlepsza oferta do domu lub mieszkania. Szybkie i stabilne łącze internetowe od Vectry to nie tylko podstawa multimedialnego centrum rozrywki ale także możliwość nauki i pracy w trybie zdalnym."
   }
 }

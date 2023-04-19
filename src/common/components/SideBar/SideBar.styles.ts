@@ -29,16 +29,14 @@ export const LogoImage = styled.img`
 `;
 
 export const MenuWrapper = styled.div`
-  width: 90%;
-  height: 50%;
-  display: flex;
+  width: 100%;
+  height: 75%;
 `;
 
 export const MenuNavigationItemWrapper = styled.ul`
   display: flex;
-  align-items: center;
   flex-direction: column;
-  font-size: ${({ theme }) => theme.fontSize.l};
+  font-size: ${({ theme }) => theme.fontSize.xl};
   color: white;
   font-weight: 700;
 

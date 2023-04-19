@@ -18,6 +18,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   a, ul, li {
+    margin:0;
     list-style: none;
     text-decoration: none;
   }
@@ -26,4 +27,6 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0;
     margin: 0;
   }
+
+
 `;

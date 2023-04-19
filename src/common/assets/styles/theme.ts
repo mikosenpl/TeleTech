@@ -6,6 +6,7 @@ export const lightTheme: DefaultTheme = {
     secondary: '#3b4d61',
     tertiary: '#6b7b8c',
     body: '#EFF1E9',
+    contrast: '#FFFFFF',
   },
   fontSize: {
     xxl: '5rem',
@@ -31,6 +32,7 @@ export const darkTheme: DefaultTheme = {
     secondary: '#093A4B',
     tertiary: '#06D59F',
     body: '#293B4C',
+    contrast: '#FFFFFF',
   },
   fontSize: {
     xxl: '2.5rem',
@@ -57,6 +59,7 @@ declare module 'styled-components' {
       secondary: string;
       tertiary: string;
       body: string;
+      contrast: string;
     };
     fontSize: {
       xxl: string;
