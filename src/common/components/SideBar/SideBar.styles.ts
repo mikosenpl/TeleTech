@@ -67,8 +67,7 @@ export const MenuNavigationItemActive = styled.li`
     right: 0;
     border-style: solid;
     border-width: 12px 25px 12px 0;
-    border-color: transparent ${({ theme }) => theme.colors.primary} transparent
-      transparent;
+    border-color: transparent ${({ theme }) => theme.colors.primary} transparent transparent;
     -webkit-transition: all 0.2s ease-in-out;
     transition: all 0.2s ease-in-out;
   }

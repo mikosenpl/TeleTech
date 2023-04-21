@@ -38,9 +38,7 @@ const InternetOffers = () => {
     }
   };
 
-  const yearOffer: number = useSelector(
-    (state: RootState) => state.display.year
-  );
+  const yearOffer: number = useSelector((state: RootState) => state.display.year);
 
   const InternetOfferService = mockPriceOfService.find(
     (service) => service.nameOfService === Services.INTERNET
@@ -55,9 +53,7 @@ const InternetOffers = () => {
   );
   const OfferCenterHeader = (
     <>
-      <ServiceCardDescriptionText>
-        {t(`offer.${Services.INTERNET}`)}
-      </ServiceCardDescriptionText>
+      <ServiceCardDescriptionText>{t(`offer.${Services.INTERNET}`)}</ServiceCardDescriptionText>
       <ServiceCardPriceText>
         {InternetOfferPerYear?.price} {InternetOfferPerYear?.currency}
       </ServiceCardPriceText>
@@ -80,27 +76,23 @@ const InternetOffers = () => {
     <InternetOffersWrapper>
       <ServiceCardWrapper>
         <ServiceCardOffer footer={OfferCenterFooter} header={OfferCenterHeader}>
-          {InternetOfferCheckList?.list.map(
-            (menuItem: CheckListContentServiceItem) => {
-              return (
-                <>
-                  <ServiceCardCheckListText>
-                    <i className="pi pi-check" />
-                    {t(menuItem.text)}
-                  </ServiceCardCheckListText>
-                </>
-              );
-            }
-          )}
+          {InternetOfferCheckList?.list.map((menuItem: CheckListContentServiceItem) => {
+            return (
+              <>
+                <ServiceCardCheckListText>
+                  <i className="pi pi-check" />
+                  {t(menuItem.text)}
+                </ServiceCardCheckListText>
+              </>
+            );
+          })}
         </ServiceCardOffer>
       </ServiceCardWrapper>
       <ServiceDescriptionWrapper>
         <ImageServiceWrapper>
           <ImageService src={InternetImage} alt="Internet service" />
         </ImageServiceWrapper>
-        <DescriptionServiceText>
-          {t('internet.serviceDescription')}
-        </DescriptionServiceText>
+        <DescriptionServiceText>{t('internet.serviceDescription')}</DescriptionServiceText>
       </ServiceDescriptionWrapper>
     </InternetOffersWrapper>
   );

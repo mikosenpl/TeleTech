@@ -38,9 +38,7 @@ const DecoderOffers = () => {
     }
   };
 
-  const yearOffer: number = useSelector(
-    (state: RootState) => state.display.year
-  );
+  const yearOffer: number = useSelector((state: RootState) => state.display.year);
 
   const DecoderOfferService = mockPriceOfService.find(
     (service) => service.nameOfService === Services.DECODER
@@ -55,9 +53,7 @@ const DecoderOffers = () => {
   );
   const OfferCenterHeader = (
     <>
-      <ServiceCardDescriptionText>
-        {t(`offer.${Services.DECODER}`)}
-      </ServiceCardDescriptionText>
+      <ServiceCardDescriptionText>{t(`offer.${Services.DECODER}`)}</ServiceCardDescriptionText>
       <ServiceCardPriceText>
         {DecoderOfferPerYear?.price} {DecoderOfferPerYear?.currency}
       </ServiceCardPriceText>
@@ -80,27 +76,23 @@ const DecoderOffers = () => {
     <DekoderOffersWrapper>
       <ServiceCardWrapper>
         <ServiceCardOffer footer={OfferCenterFooter} header={OfferCenterHeader}>
-          {DecoderOfferCheckList?.list.map(
-            (menuItem: CheckListContentServiceItem) => {
-              return (
-                <>
-                  <ServiceCardCheckListText>
-                    <i className="pi pi-check" />
-                    {t(menuItem.text)}
-                  </ServiceCardCheckListText>
-                </>
-              );
-            }
-          )}
+          {DecoderOfferCheckList?.list.map((menuItem: CheckListContentServiceItem) => {
+            return (
+              <>
+                <ServiceCardCheckListText>
+                  <i className="pi pi-check" />
+                  {t(menuItem.text)}
+                </ServiceCardCheckListText>
+              </>
+            );
+          })}
         </ServiceCardOffer>
       </ServiceCardWrapper>
       <ServiceDescriptionWrapper>
         <ImageServiceWrapper>
           <ImageService src={DecoderImage} alt="decoder service" />
         </ImageServiceWrapper>
-        <DescriptionServiceText>
-          {t('decoder.serviceDescription')}
-        </DescriptionServiceText>
+        <DescriptionServiceText>{t('decoder.serviceDescription')}</DescriptionServiceText>
       </ServiceDescriptionWrapper>
     </DekoderOffersWrapper>
   );

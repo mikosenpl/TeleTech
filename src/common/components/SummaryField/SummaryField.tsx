@@ -18,9 +18,11 @@ import { DataView } from 'primereact/dataview';
 import { Button } from 'primereact/button';
 import { useTranslation } from 'react-i18next';
 import { mockPriceOfSpecialOfferServices } from '../../mocks/priceList';
-import { calculateTheTotalPrice } from '../../utils/calculateTheTotalPrice';
+import { TotalPriceResponse, calculateTheTotalPrice } from '../../utils/calculateTheTotalPrice';
 import { Year } from '../../enums/Years';
 import { setDisplayYear } from '../../store/slices/display/displaySlice';
+import { Promotion } from '../../models/Promotion';
+import { useState } from 'react';
 
 const SummaryField = () => {
   const { t } = useTranslation();
@@ -28,11 +30,15 @@ const SummaryField = () => {
 
   const possiblyYearPicker = [Year._2023, Year._2024, Year._2025];
 
-  const yearOffer: number = useSelector(
-    (state: RootState) => state.display.year
-  );
+  const yearOffer: number = useSelector((state: RootState) => state.display.year);
   const allSelectedService: Service[] = useSelector(
     (state: RootState) => state.display.selectedServices
+  );
+
+  let calculatedTotalPrice = calculateTheTotalPrice(
+    allSelectedService,
+    yearOffer,
+    mockPriceOfSpecialOfferServices
   );
 
   const handleChangeYear = (selectedYear: number) => {
@@ -40,16 +46,12 @@ const SummaryField = () => {
   };
 
   const itemTemplate = (item: Service) => {
-    const itemPrice = item.pricePerYear?.find(
-      (item) => item.year === yearOffer
-    );
+    const itemPrice = item.pricePerYear?.find((item) => item.year === yearOffer);
     return (
       <SummaryListItem>
         <SummaryListItemLeft>
           <SummaryListItemLeftArea>
-            <SummaryServiceNameText>
-              {t(`offer.${item.nameOfService}`)}
-            </SummaryServiceNameText>
+            <SummaryServiceNameText>{t(`offer.${item.nameOfService}`)}</SummaryServiceNameText>
           </SummaryListItemLeftArea>
           <SummaryListItemLeftArea>
             <SummaryPriceText>
@@ -83,15 +85,20 @@ const SummaryField = () => {
           emptyMessage={t('offer.summaryList.empty').toString()}
         />
       </div>
+
       <SummaryButtonArea>
+        {calculatedTotalPrice.promotion ? (
+          <>
+            <SummaryText>{t('offer.promotionalOffers')}</SummaryText>
+            <SummaryServiceNameText>
+              {t(`offer.${calculatedTotalPrice.promotion.promotionService.nameOfService}`)}
+            </SummaryServiceNameText>
+          </>
+        ) : (
+          <></>
+        )}
         <SummaryText>{t('offer.sumUp')}</SummaryText>
-        <SummaryButton
-          label={calculateTheTotalPrice(
-            allSelectedService,
-            yearOffer,
-            mockPriceOfSpecialOfferServices
-          ).toString()}
-        ></SummaryButton>
+        <SummaryButton label={calculatedTotalPrice.totalPrice.toString()}></SummaryButton>
       </SummaryButtonArea>
     </SummaryFieldWrapper>
   );

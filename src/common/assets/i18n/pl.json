@@ -4,7 +4,8 @@
     "internet": "Internet",
     "television": "Telewizja",
     "contract": "Abonament",
-    "decoder": "Dekoder 4K"
+    "decoder": "Dekoder 4K",
+    "newService": "Dodaj nową usługę!"
   },
   "offer": {
     "check": "Dodaj do wybranych usług",
@@ -25,6 +26,7 @@
       "fifth": "Dekoder TV Smart 4K BOX"
     },
     "sumUp": "Łącznie:",
+    "promotionalOffers": "Naliczone promocje:",
     "summaryList": {
       "header": "Lista wybranych usług:",
       "empty": "Aby dodac usługę, przejdź na podstronę z interesującą ofertą"

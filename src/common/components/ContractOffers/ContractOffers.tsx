@@ -38,9 +38,7 @@ const ContractOffers = () => {
     }
   };
 
-  const yearOffer: number = useSelector(
-    (state: RootState) => state.display.year
-  );
+  const yearOffer: number = useSelector((state: RootState) => state.display.year);
 
   const ContractOfferService = mockPriceOfService.find(
     (service) => service.nameOfService === Services.CONTRACT
@@ -55,9 +53,7 @@ const ContractOffers = () => {
   );
   const OfferCenterHeader = (
     <>
-      <ServiceCardDescriptionText>
-        {t(`offer.${Services.CONTRACT}`)}
-      </ServiceCardDescriptionText>
+      <ServiceCardDescriptionText>{t(`offer.${Services.CONTRACT}`)}</ServiceCardDescriptionText>
       <ServiceCardPriceText>
         {ContractOfferPerYear?.price} {ContractOfferPerYear?.currency}
       </ServiceCardPriceText>
@@ -80,27 +76,23 @@ const ContractOffers = () => {
     <ContractOffersWrapper>
       <ServiceCardWrapper>
         <ServiceCardOffer footer={OfferCenterFooter} header={OfferCenterHeader}>
-          {ContractOfferCheckList?.list.map(
-            (menuItem: CheckListContentServiceItem) => {
-              return (
-                <>
-                  <ServiceCardCheckListText>
-                    <i className="pi pi-check" />
-                    {t(menuItem.text)}
-                  </ServiceCardCheckListText>
-                </>
-              );
-            }
-          )}
+          {ContractOfferCheckList?.list.map((menuItem: CheckListContentServiceItem) => {
+            return (
+              <>
+                <ServiceCardCheckListText>
+                  <i className="pi pi-check" />
+                  {t(menuItem.text)}
+                </ServiceCardCheckListText>
+              </>
+            );
+          })}
         </ServiceCardOffer>
       </ServiceCardWrapper>
       <ServiceDescriptionWrapper>
         <ImageServiceWrapper>
           <ImageService src={ContractImage} alt="contract service" />
         </ImageServiceWrapper>
-        <DescriptionServiceText>
-          {t('contract.serviceDescription')}
-        </DescriptionServiceText>
+        <DescriptionServiceText>{t('contract.serviceDescription')}</DescriptionServiceText>
       </ServiceDescriptionWrapper>
     </ContractOffersWrapper>
   );

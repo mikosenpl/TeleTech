@@ -27,17 +27,14 @@ import { Promotion } from '../../models/Promotion';
 const MainContent = () => {
   const { t } = useTranslation();
 
-  const yearOffer: number = useSelector(
-    (state: RootState) => state.display.year
-  );
+  const yearOffer: number = useSelector((state: RootState) => state.display.year);
 
   const MainSpecialOfferService = mockPriceOfSpecialOfferServices.find(
     (service) => service.promotionService.nameOfService === MAIN_OFFER
   );
-  const MainSpecialOffer =
-    MainSpecialOfferService?.promotionService.pricePerYear.find(
-      (item) => item.year === yearOffer
-    );
+  const MainSpecialOffer = MainSpecialOfferService?.promotionService.pricePerYear.find(
+    (item) => item.year === yearOffer
+  );
   const MainSpecialOfferCheckList = mockCheckListContentService.find(
     (checkList) => checkList.nameOfService === MAIN_OFFER
   );
@@ -45,10 +42,9 @@ const MainContent = () => {
   const SecondSpecialOfferService = mockPriceOfSpecialOfferServices.find(
     (service) => service.promotionService.nameOfService === LEFT_OFFER
   );
-  const SecondSpecialOffer =
-    SecondSpecialOfferService?.promotionService.pricePerYear.find(
-      (item) => item.year === yearOffer
-    );
+  const SecondSpecialOffer = SecondSpecialOfferService?.promotionService.pricePerYear.find(
+    (item) => item.year === yearOffer
+  );
 
   const SecondSpecialOfferCheckList = mockCheckListContentService.find(
     (checkList) => checkList.nameOfService === LEFT_OFFER
@@ -58,10 +54,9 @@ const MainContent = () => {
     (service) => service.promotionService.nameOfService === RIGHT_OFFER
   );
 
-  const ThirdSpecialOffer =
-    ThirdSpecialOfferService?.promotionService.pricePerYear.find(
-      (item) => item.year === yearOffer
-    );
+  const ThirdSpecialOffer = ThirdSpecialOfferService?.promotionService.pricePerYear.find(
+    (item) => item.year === yearOffer
+  );
 
   const ThirdSpecialOfferCheckList = mockCheckListContentService.find(
     (checkList) => checkList.nameOfService === RIGHT_OFFER
@@ -69,19 +64,13 @@ const MainContent = () => {
 
   const handleCheckButtonClick = (service: Promotion | undefined) => {
     if (service) {
-      alert(
-        `Zamówiono ofertę: ${t(
-          `offer.${service.promotionService.nameOfService}`
-        )} `
-      );
+      alert(`Zamówiono ofertę: ${t(`offer.${service.promotionService.nameOfService}`)} `);
     }
   };
 
   const OfferCenterHeader = (
     <>
-      <DescriptionOfferTextCenter>
-        {t(`offer.${MAIN_OFFER}`)}
-      </DescriptionOfferTextCenter>
+      <DescriptionOfferTextCenter>{t(`offer.${MAIN_OFFER}`)}</DescriptionOfferTextCenter>
       <PriceTextCenter>
         {MainSpecialOffer?.price} {MainSpecialOffer?.currency}
       </PriceTextCenter>
@@ -143,46 +132,40 @@ const MainContent = () => {
     <MainContentWrapper>
       <OffersWrapper>
         <OfferSides footer={OfferLeftFooter} header={OfferLeftHeader}>
-          {SecondSpecialOfferCheckList?.list.map(
-            (menuItem: CheckListContentServiceItem) => {
-              return (
-                <>
-                  <OfferCheckListText>
-                    <i className="pi pi-check" />
-                    {t(menuItem.text)}
-                  </OfferCheckListText>
-                </>
-              );
-            }
-          )}
+          {SecondSpecialOfferCheckList?.list.map((menuItem: CheckListContentServiceItem) => {
+            return (
+              <>
+                <OfferCheckListText>
+                  <i className="pi pi-check" />
+                  {t(menuItem.text)}
+                </OfferCheckListText>
+              </>
+            );
+          })}
         </OfferSides>
         <OfferCenter footer={OfferCenterFooter} header={OfferCenterHeader}>
-          {MainSpecialOfferCheckList?.list.map(
-            (menuItem: CheckListContentServiceItem) => {
-              return (
-                <>
-                  <OfferCheckListTextCenter>
-                    <i className="pi pi-check" />
-                    {t(menuItem.text)}
-                  </OfferCheckListTextCenter>
-                </>
-              );
-            }
-          )}
+          {MainSpecialOfferCheckList?.list.map((menuItem: CheckListContentServiceItem) => {
+            return (
+              <>
+                <OfferCheckListTextCenter>
+                  <i className="pi pi-check" />
+                  {t(menuItem.text)}
+                </OfferCheckListTextCenter>
+              </>
+            );
+          })}
         </OfferCenter>
         <OfferSides footer={OfferRightFooter} header={OfferRightHeader}>
-          {ThirdSpecialOfferCheckList?.list.map(
-            (menuItem: CheckListContentServiceItem) => {
-              return (
-                <>
-                  <OfferCheckListText>
-                    <i className="pi pi-check" />
-                    {t(menuItem.text)}
-                  </OfferCheckListText>
-                </>
-              );
-            }
-          )}
+          {ThirdSpecialOfferCheckList?.list.map((menuItem: CheckListContentServiceItem) => {
+            return (
+              <>
+                <OfferCheckListText>
+                  <i className="pi pi-check" />
+                  {t(menuItem.text)}
+                </OfferCheckListText>
+              </>
+            );
+          })}
         </OfferSides>
       </OffersWrapper>
     </MainContentWrapper>

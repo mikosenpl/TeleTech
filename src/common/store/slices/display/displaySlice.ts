@@ -23,8 +23,7 @@ const displaySlice = createSlice({
       const filterService = action.payload.filter((service) => {
         return (
           state.selectedServices.findIndex(
-            (selectedServices) =>
-              selectedServices.nameOfService === service.nameOfService
+            (selectedServices) => selectedServices.nameOfService === service.nameOfService
           ) === -1
         );
       });
@@ -33,7 +32,6 @@ const displaySlice = createSlice({
   },
 });
 
-export const { setDisplayYear, setDisplaySelectedService } =
-  displaySlice.actions;
+export const { setDisplayYear, setDisplaySelectedService } = displaySlice.actions;
 
 export default displaySlice.reducer;

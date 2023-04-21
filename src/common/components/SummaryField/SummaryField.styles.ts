@@ -16,9 +16,11 @@ export const SummaryFieldWrapper = styled.div`
 
 export const SummaryButtonArea = styled.div`
   width: 100%;
-  height: 25%;
+  height: 50%;
   display: flex;
   flex-direction: column;
+  justify-content: flex-end;
+  gap: 0.3rem;
   padding: 1rem;
 `;
 

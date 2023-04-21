@@ -38,9 +38,7 @@ const TelevisionOffers = () => {
     }
   };
 
-  const yearOffer: number = useSelector(
-    (state: RootState) => state.display.year
-  );
+  const yearOffer: number = useSelector((state: RootState) => state.display.year);
 
   const TelevisionOfferService = mockPriceOfService.find(
     (service) => service.nameOfService === Services.TELEVISION
@@ -55,9 +53,7 @@ const TelevisionOffers = () => {
   );
   const OfferCenterHeader = (
     <>
-      <ServiceCardDescriptionText>
-        {t(`offer.${Services.TELEVISION}`)}
-      </ServiceCardDescriptionText>
+      <ServiceCardDescriptionText>{t(`offer.${Services.TELEVISION}`)}</ServiceCardDescriptionText>
       <ServiceCardPriceText>
         {TelevisionOfferPerYear?.price} {TelevisionOfferPerYear?.currency}
       </ServiceCardPriceText>
@@ -80,27 +76,23 @@ const TelevisionOffers = () => {
     <TelevisionOffersWrapper>
       <ServiceCardWrapper>
         <ServiceCardOffer footer={OfferCenterFooter} header={OfferCenterHeader}>
-          {TelevisionOfferCheckList?.list.map(
-            (menuItem: CheckListContentServiceItem) => {
-              return (
-                <>
-                  <ServiceCardCheckListText>
-                    <i className="pi pi-check" />
-                    {t(menuItem.text)}
-                  </ServiceCardCheckListText>
-                </>
-              );
-            }
-          )}
+          {TelevisionOfferCheckList?.list.map((menuItem: CheckListContentServiceItem) => {
+            return (
+              <>
+                <ServiceCardCheckListText>
+                  <i className="pi pi-check" />
+                  {t(menuItem.text)}
+                </ServiceCardCheckListText>
+              </>
+            );
+          })}
         </ServiceCardOffer>
       </ServiceCardWrapper>
       <ServiceDescriptionWrapper>
         <ImageServiceWrapper>
           <ImageService src={TelevisionImage} alt="television service" />
         </ImageServiceWrapper>
-        <DescriptionServiceText>
-          {t('television.serviceDescription')}
-        </DescriptionServiceText>
+        <DescriptionServiceText>{t('television.serviceDescription')}</DescriptionServiceText>
       </ServiceDescriptionWrapper>
     </TelevisionOffersWrapper>
   );

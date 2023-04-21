@@ -1,65 +1,90 @@
 import { Service } from '../models/PriceOfService';
 import { Promotion } from '../models/Promotion';
 
+export interface TotalPriceResponse {
+  totalPrice: number;
+  promotion?: Promotion;
+}
+
+interface PossiblyTotalPrice {
+  totalPrice: number;
+  promotion: Promotion;
+}
+
 export const calculateTheTotalPrice = (
   services: Service[],
   year: number,
   promotionsList: Promotion[]
-) => {
+): TotalPriceResponse => {
   let promotionFlag = true;
-  let fullPrice = 0;
   let serviceArrayHelper: Service[] = services;
   let promotions: Promotion[] = [];
-  console.log('----------START FUNCTION--------------');
 
-  for (const promotion of promotionsList) {
+  let finalPromotion: Promotion;
+  let finalTotalPrice = 0;
+  let finalResponse: TotalPriceResponse;
+
+  for (let promotionListItem of promotionsList) {
     promotionFlag = true;
-    console.log('----------Start--------------');
-    console.log(promotion);
-    for (let i = 0; i < promotion.nameOfServices.length; i++) {
-      console.log('----Promotion Name of service---------');
-      console.log(promotion.nameOfServices[i]);
+    for (let i = 0; i < promotionListItem.nameOfServices.length; i++) {
       if (
-        !services.some(
-          (service) => service.nameOfService === promotion.nameOfServices[i]
-        )
+        !services.some((service) => service.nameOfService === promotionListItem.nameOfServices[i])
       ) {
-        console.log('----Odrzucono: na: ' + i);
         promotionFlag = false;
       }
-      console.log('---------------end loop-------------');
     }
     if (promotionFlag == true) {
-      promotions.push(promotion);
+      promotions.push(promotionListItem);
     }
   }
-  console.log('Promottion: ');
-  console.log(promotions);
+
   if (promotions.length > 0) {
     promotions.sort(
-      (a, b) =>
-        b.promotionService.nameOfService.length -
-        a.promotionService.nameOfService.length
+      (a, b) => b.promotionService.nameOfService.length - a.promotionService.nameOfService.length
     );
-    let price = promotions[0].promotionService.pricePerYear.find(
-      (price) => price.year === year
-    )?.price;
-    if (price) {
-      fullPrice += price;
+
+    let totalPriceForCurrentPromotion = 0;
+    let possiblePrices: PossiblyTotalPrice[] = [];
+
+    for (let i = 0; i < promotions.length; i++) {
+      totalPriceForCurrentPromotion = 0;
+      serviceArrayHelper = services;
+
+      let priceForSelectedYear = promotions[i].promotionService.pricePerYear.find(
+        (price) => price.year === year
+      )?.price;
+
+      if (priceForSelectedYear) {
+        totalPriceForCurrentPromotion += priceForSelectedYear;
+      }
+
+      serviceArrayHelper = services.filter(
+        (service) => ![...promotions[i].nameOfServices].includes(service.nameOfService)
+      );
+
+      for (let i = 0; i < serviceArrayHelper.length; i++) {
+        let price = serviceArrayHelper[i].pricePerYear.find((price) => price.year === year)?.price;
+        if (price) {
+          totalPriceForCurrentPromotion += price;
+        }
+      }
+
+      possiblePrices[i] = { promotion: promotions[i], totalPrice: totalPriceForCurrentPromotion };
     }
 
-    serviceArrayHelper = services.filter(
-      (service) =>
-        ![...promotions[0].nameOfServices].includes(service.nameOfService)
-    );
-  }
-  for (let y = 0; y < serviceArrayHelper.length; y++) {
-    let price = serviceArrayHelper[y].pricePerYear.find(
-      (price) => price.year === year
-    )?.price;
-    if (price) {
-      fullPrice += price;
+    possiblePrices.sort((a, b) => a.totalPrice - b.totalPrice);
+    finalPromotion = possiblePrices[0].promotion;
+    finalTotalPrice = possiblePrices[0].totalPrice;
+    finalResponse = { promotion: finalPromotion, totalPrice: finalTotalPrice };
+    return finalResponse;
+  } else {
+    for (let i = 0; i < services.length; i++) {
+      let price = services[i].pricePerYear.find((price) => price.year === year)?.price;
+      if (price) {
+        finalTotalPrice += price;
+      }
     }
+    finalResponse = { totalPrice: finalTotalPrice };
+    return finalResponse;
   }
-  return fullPrice;
 };
