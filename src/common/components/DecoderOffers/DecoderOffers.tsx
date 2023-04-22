@@ -2,7 +2,6 @@ import { t } from 'i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { Services } from '../../enums/Services';
 import { mockCheckListContentService } from '../../mocks/checkListContentService';
-import { mockPriceOfService } from '../../mocks/priceList';
 import { Service } from '../../models/PriceOfService';
 import { CheckListContentServiceItem } from '../../models/checkListContentService';
 import { setDisplaySelectedService } from '../../store/slices/display/displaySlice';
@@ -30,6 +29,18 @@ const DecoderOffers = () => {
   const allSelectedService: Service[] = useSelector(
     (state: RootState) => state.display.selectedServices
   );
+  const yearOffer: number = useSelector((state: RootState) => state.display.selectedYear);
+  const allService: Service[] = useSelector((state: RootState) => state.display.services);
+
+  const DecoderOfferService = allService.find(
+    (service) => service.nameOfService === Services.DECODER
+  );
+  const DecoderOfferPerYear = DecoderOfferService?.pricePerYear.find(
+    (item) => item.year === yearOffer
+  );
+  const DecoderOfferCheckList = mockCheckListContentService.find(
+    (checkList) => checkList.nameOfService === Services.DECODER
+  );
 
   const handleCheckButtonClick = (service: Service | undefined) => {
     if (service) {
@@ -38,19 +49,6 @@ const DecoderOffers = () => {
     }
   };
 
-  const yearOffer: number = useSelector((state: RootState) => state.display.year);
-
-  const DecoderOfferService = mockPriceOfService.find(
-    (service) => service.nameOfService === Services.DECODER
-  );
-
-  const DecoderOfferPerYear = DecoderOfferService?.pricePerYear.find(
-    (item) => item.year === yearOffer
-  );
-
-  const DecoderOfferCheckList = mockCheckListContentService.find(
-    (checkList) => checkList.nameOfService === Services.DECODER
-  );
   const OfferCenterHeader = (
     <>
       <ServiceCardDescriptionText>{t(`offer.${Services.DECODER}`)}</ServiceCardDescriptionText>
@@ -60,7 +58,6 @@ const DecoderOffers = () => {
       <ServiceCardCurrencyText>/{t('offer.month')}</ServiceCardCurrencyText>
     </>
   );
-
   const OfferCenterFooter = (
     <ServiceCardFooter>
       <ServiceCardCheckButton
@@ -92,7 +89,7 @@ const DecoderOffers = () => {
         <ImageServiceWrapper>
           <ImageService src={DecoderImage} alt="decoder service" />
         </ImageServiceWrapper>
-        <DescriptionServiceText>{t('decoder.serviceDescription')}</DescriptionServiceText>
+        <DescriptionServiceText>{t('service.decoder.description')}</DescriptionServiceText>
       </ServiceDescriptionWrapper>
     </DekoderOffersWrapper>
   );

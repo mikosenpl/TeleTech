@@ -1,7 +1,6 @@
 import { t } from 'i18next';
 import { Services } from '../../enums/Services';
 import { mockCheckListContentService } from '../../mocks/checkListContentService';
-import { mockPriceOfService } from '../../mocks/priceList';
 import { Service } from '../../models/PriceOfService';
 import { CheckListContentServiceItem } from '../../models/checkListContentService';
 import {
@@ -30,6 +29,18 @@ const InternetOffers = () => {
   const allSelectedService: Service[] = useSelector(
     (state: RootState) => state.display.selectedServices
   );
+  const allService: Service[] = useSelector((state: RootState) => state.display.services);
+  const yearOffer: number = useSelector((state: RootState) => state.display.selectedYear);
+
+  const InternetOfferService = allService.find(
+    (service) => service.nameOfService === Services.INTERNET
+  );
+  const InternetOfferPerYear = InternetOfferService?.pricePerYear.find(
+    (item) => item.year === yearOffer
+  );
+  const InternetOfferCheckList = mockCheckListContentService.find(
+    (checkList) => checkList.nameOfService === Services.INTERNET
+  );
 
   const handleCheckButtonClick = (service: Service | undefined) => {
     if (service) {
@@ -38,19 +49,6 @@ const InternetOffers = () => {
     }
   };
 
-  const yearOffer: number = useSelector((state: RootState) => state.display.year);
-
-  const InternetOfferService = mockPriceOfService.find(
-    (service) => service.nameOfService === Services.INTERNET
-  );
-
-  const InternetOfferPerYear = InternetOfferService?.pricePerYear.find(
-    (item) => item.year === yearOffer
-  );
-
-  const InternetOfferCheckList = mockCheckListContentService.find(
-    (checkList) => checkList.nameOfService === Services.INTERNET
-  );
   const OfferCenterHeader = (
     <>
       <ServiceCardDescriptionText>{t(`offer.${Services.INTERNET}`)}</ServiceCardDescriptionText>
@@ -60,7 +58,6 @@ const InternetOffers = () => {
       <ServiceCardCurrencyText>/{t('offer.month')}</ServiceCardCurrencyText>
     </>
   );
-
   const OfferCenterFooter = (
     <ServiceCardFooter>
       <ServiceCardCheckButton
@@ -92,7 +89,7 @@ const InternetOffers = () => {
         <ImageServiceWrapper>
           <ImageService src={InternetImage} alt="Internet service" />
         </ImageServiceWrapper>
-        <DescriptionServiceText>{t('internet.serviceDescription')}</DescriptionServiceText>
+        <DescriptionServiceText>{t('service.internet.description')}</DescriptionServiceText>
       </ServiceDescriptionWrapper>
     </InternetOffersWrapper>
   );

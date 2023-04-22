@@ -53,25 +53,6 @@ export const SummaryListItemRight = styled.div`
   align-items: center;
 `;
 
-export const SummaryServiceNameText = styled.p`
-  color: ${({ theme }) => theme.colors.tertiary};
-  font-size: ${({ theme }) => theme.fontSize.l};
-`;
-
-export const SummaryPriceText = styled.p`
-  font-weight: 700;
-  color: ${({ theme }) => theme.colors.secondary};
-  font-size: ${({ theme }) => theme.fontSize.xl};
-`;
-
-export const SummaryText = styled.p`
-  text-align: center;
-  margin-top: 1rem;
-  font-weight: 700;
-  color: ${({ theme }) => theme.colors.secondary};
-  font-size: ${({ theme }) => theme.fontSize.xl};
-`;
-
 export const SummaryButton = styled(Button)`
   margin-top: 1rem;
   background-color: ${({ theme }) => theme.colors.primary};
@@ -97,4 +78,23 @@ export const YearPicker = styled(Dropdown)`
   .p-dropdown-trigger {
     color: ${({ theme }) => theme.colors.contrast};
   }
+`;
+
+export const SummaryServiceNameText = styled.p`
+  color: ${({ theme }) => theme.colors.tertiary};
+  font-size: ${({ theme }) => theme.fontSize.l};
+`;
+
+export const SummaryPriceText = styled.p`
+  font-weight: 700;
+  color: ${({ theme }) => theme.colors.secondary};
+  font-size: ${({ theme }) => theme.fontSize.xl};
+`;
+
+export const SummaryText = styled.p`
+  text-align: center;
+  margin-top: 1rem;
+  font-weight: 700;
+  color: ${({ theme }) => theme.colors.secondary};
+  font-size: ${({ theme }) => theme.fontSize.xl};
 `;

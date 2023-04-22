@@ -2,7 +2,6 @@ import { t } from 'i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { Services } from '../../enums/Services';
 import { mockCheckListContentService } from '../../mocks/checkListContentService';
-import { mockPriceOfService } from '../../mocks/priceList';
 import { Service } from '../../models/PriceOfService';
 import { CheckListContentServiceItem } from '../../models/checkListContentService';
 import { setDisplaySelectedService } from '../../store/slices/display/displaySlice';
@@ -30,6 +29,18 @@ const ContractOffers = () => {
   const allSelectedService: Service[] = useSelector(
     (state: RootState) => state.display.selectedServices
   );
+  const allService: Service[] = useSelector((state: RootState) => state.display.services);
+  const yearOffer: number = useSelector((state: RootState) => state.display.selectedYear);
+
+  const ContractOfferService = allService.find(
+    (service) => service.nameOfService === Services.CONTRACT
+  );
+  const ContractOfferPerYear = ContractOfferService?.pricePerYear.find(
+    (item) => item.year === yearOffer
+  );
+  const ContractOfferCheckList = mockCheckListContentService.find(
+    (checkList) => checkList.nameOfService === Services.CONTRACT
+  );
 
   const handleCheckButtonClick = (service: Service | undefined) => {
     if (service) {
@@ -38,19 +49,6 @@ const ContractOffers = () => {
     }
   };
 
-  const yearOffer: number = useSelector((state: RootState) => state.display.year);
-
-  const ContractOfferService = mockPriceOfService.find(
-    (service) => service.nameOfService === Services.CONTRACT
-  );
-
-  const ContractOfferPerYear = ContractOfferService?.pricePerYear.find(
-    (item) => item.year === yearOffer
-  );
-
-  const ContractOfferCheckList = mockCheckListContentService.find(
-    (checkList) => checkList.nameOfService === Services.CONTRACT
-  );
   const OfferCenterHeader = (
     <>
       <ServiceCardDescriptionText>{t(`offer.${Services.CONTRACT}`)}</ServiceCardDescriptionText>
@@ -60,7 +58,6 @@ const ContractOffers = () => {
       <ServiceCardCurrencyText>/{t('offer.month')}</ServiceCardCurrencyText>
     </>
   );
-
   const OfferCenterFooter = (
     <ServiceCardFooter>
       <ServiceCardCheckButton
@@ -92,7 +89,7 @@ const ContractOffers = () => {
         <ImageServiceWrapper>
           <ImageService src={ContractImage} alt="contract service" />
         </ImageServiceWrapper>
-        <DescriptionServiceText>{t('contract.serviceDescription')}</DescriptionServiceText>
+        <DescriptionServiceText>{t('service.contract.description')}</DescriptionServiceText>
       </ServiceDescriptionWrapper>
     </ContractOffersWrapper>
   );

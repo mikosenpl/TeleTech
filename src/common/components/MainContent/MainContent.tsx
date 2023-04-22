@@ -16,7 +16,6 @@ import {
   PriceText,
   PriceTextCenter,
 } from './MainContent.styles';
-import { mockPriceOfSpecialOfferServices } from '../../mocks/priceList';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
 import { CheckListContentServiceItem } from '../../models/checkListContentService';
@@ -27,9 +26,10 @@ import { Promotion } from '../../models/Promotion';
 const MainContent = () => {
   const { t } = useTranslation();
 
-  const yearOffer: number = useSelector((state: RootState) => state.display.year);
+  const allPromotions: Promotion[] = useSelector((state: RootState) => state.display.promotions);
+  const yearOffer: number = useSelector((state: RootState) => state.display.selectedYear);
 
-  const MainSpecialOfferService = mockPriceOfSpecialOfferServices.find(
+  const MainSpecialOfferService = allPromotions.find(
     (service) => service.promotionService.nameOfService === MAIN_OFFER
   );
   const MainSpecialOffer = MainSpecialOfferService?.promotionService.pricePerYear.find(
@@ -39,32 +39,29 @@ const MainContent = () => {
     (checkList) => checkList.nameOfService === MAIN_OFFER
   );
 
-  const SecondSpecialOfferService = mockPriceOfSpecialOfferServices.find(
+  const SecondSpecialOfferService = allPromotions.find(
     (service) => service.promotionService.nameOfService === LEFT_OFFER
   );
   const SecondSpecialOffer = SecondSpecialOfferService?.promotionService.pricePerYear.find(
     (item) => item.year === yearOffer
   );
-
   const SecondSpecialOfferCheckList = mockCheckListContentService.find(
     (checkList) => checkList.nameOfService === LEFT_OFFER
   );
 
-  const ThirdSpecialOfferService = mockPriceOfSpecialOfferServices.find(
+  const ThirdSpecialOfferService = allPromotions.find(
     (service) => service.promotionService.nameOfService === RIGHT_OFFER
   );
-
   const ThirdSpecialOffer = ThirdSpecialOfferService?.promotionService.pricePerYear.find(
     (item) => item.year === yearOffer
   );
-
   const ThirdSpecialOfferCheckList = mockCheckListContentService.find(
     (checkList) => checkList.nameOfService === RIGHT_OFFER
   );
 
   const handleCheckButtonClick = (service: Promotion | undefined) => {
     if (service) {
-      alert(`Zamówiono ofertę: ${t(`offer.${service.promotionService.nameOfService}`)} `);
+      alert(`${t('info.offerSucess')} ${t(`offer.${service.promotionService.nameOfService}`)} `);
     }
   };
 

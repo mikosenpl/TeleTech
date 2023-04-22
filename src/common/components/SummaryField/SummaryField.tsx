@@ -17,32 +17,26 @@ import { Service } from '../../models/PriceOfService';
 import { DataView } from 'primereact/dataview';
 import { Button } from 'primereact/button';
 import { useTranslation } from 'react-i18next';
-import { mockPriceOfSpecialOfferServices } from '../../mocks/priceList';
-import { TotalPriceResponse, calculateTheTotalPrice } from '../../utils/calculateTheTotalPrice';
+import { calculateTheTotalPrice } from '../../utils/calculateTheTotalPrice';
 import { Year } from '../../enums/Years';
-import { setDisplayYear } from '../../store/slices/display/displaySlice';
+import { setSelectedYear } from '../../store/slices/display/displaySlice';
 import { Promotion } from '../../models/Promotion';
-import { useState } from 'react';
 
 const SummaryField = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
 
-  const possiblyYearPicker = [Year._2023, Year._2024, Year._2025];
-
-  const yearOffer: number = useSelector((state: RootState) => state.display.year);
+  const years: number[] = useSelector((state: RootState) => state.display.years);
+  const yearOffer: number = useSelector((state: RootState) => state.display.selectedYear);
   const allSelectedService: Service[] = useSelector(
     (state: RootState) => state.display.selectedServices
   );
+  const allPromotions: Promotion[] = useSelector((state: RootState) => state.display.promotions);
 
-  let calculatedTotalPrice = calculateTheTotalPrice(
-    allSelectedService,
-    yearOffer,
-    mockPriceOfSpecialOfferServices
-  );
+  let calculatedTotalPrice = calculateTheTotalPrice(allSelectedService, yearOffer, allPromotions);
 
   const handleChangeYear = (selectedYear: number) => {
-    dispatch(setDisplayYear(selectedYear));
+    dispatch(setSelectedYear(selectedYear));
   };
 
   const itemTemplate = (item: Service) => {
@@ -72,12 +66,7 @@ const SummaryField = () => {
     <SummaryFieldWrapper>
       <div>
         <SummaryText>{t('offer.yearPicker')}</SummaryText>
-        <YearPicker
-          value={yearOffer}
-          onChange={(e) => handleChangeYear(e.value)}
-          options={possiblyYearPicker}
-          placeholder="Select a City"
-        />
+        <YearPicker value={yearOffer} onChange={(e) => handleChangeYear(e.value)} options={years} />
         <SummaryText>{t('offer.summaryList.header')}</SummaryText>
         <DataView
           value={allSelectedService}

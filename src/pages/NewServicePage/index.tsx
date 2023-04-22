@@ -1,10 +1,10 @@
 import MainTemplate from '../../common/components/MainTemplate/MainTemplate';
-import NewService from '../../common/components/NewService/NewService';
+import NewServiceList from '../../common/components/NewServiceList/NewServiceList';
 
 const NewServicePage = () => {
   return (
     <MainTemplate>
-      <NewService />
+      <NewServiceList />
     </MainTemplate>
   );
 };

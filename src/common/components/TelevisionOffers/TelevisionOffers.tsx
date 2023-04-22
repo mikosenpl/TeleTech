@@ -4,7 +4,6 @@ import TelevisionImage from '../../assets/icons/television.png';
 import { t } from 'i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { mockCheckListContentService } from '../../mocks/checkListContentService';
-import { mockPriceOfService } from '../../mocks/priceList';
 import { Service } from '../../models/PriceOfService';
 import { CheckListContentServiceItem } from '../../models/checkListContentService';
 import { setDisplaySelectedService } from '../../store/slices/display/displaySlice';
@@ -30,6 +29,18 @@ const TelevisionOffers = () => {
   const allSelectedService: Service[] = useSelector(
     (state: RootState) => state.display.selectedServices
   );
+  const allService: Service[] = useSelector((state: RootState) => state.display.services);
+  const yearOffer: number = useSelector((state: RootState) => state.display.selectedYear);
+
+  const TelevisionOfferService = allService.find(
+    (service) => service.nameOfService === Services.TELEVISION
+  );
+  const TelevisionOfferPerYear = TelevisionOfferService?.pricePerYear.find(
+    (item) => item.year === yearOffer
+  );
+  const TelevisionOfferCheckList = mockCheckListContentService.find(
+    (checkList) => checkList.nameOfService === Services.TELEVISION
+  );
 
   const handleCheckButtonClick = (service: Service | undefined) => {
     if (service) {
@@ -38,19 +49,6 @@ const TelevisionOffers = () => {
     }
   };
 
-  const yearOffer: number = useSelector((state: RootState) => state.display.year);
-
-  const TelevisionOfferService = mockPriceOfService.find(
-    (service) => service.nameOfService === Services.TELEVISION
-  );
-
-  const TelevisionOfferPerYear = TelevisionOfferService?.pricePerYear.find(
-    (item) => item.year === yearOffer
-  );
-
-  const TelevisionOfferCheckList = mockCheckListContentService.find(
-    (checkList) => checkList.nameOfService === Services.TELEVISION
-  );
   const OfferCenterHeader = (
     <>
       <ServiceCardDescriptionText>{t(`offer.${Services.TELEVISION}`)}</ServiceCardDescriptionText>
@@ -60,7 +58,6 @@ const TelevisionOffers = () => {
       <ServiceCardCurrencyText>/{t('offer.month')}</ServiceCardCurrencyText>
     </>
   );
-
   const OfferCenterFooter = (
     <ServiceCardFooter>
       <ServiceCardCheckButton
@@ -92,7 +89,7 @@ const TelevisionOffers = () => {
         <ImageServiceWrapper>
           <ImageService src={TelevisionImage} alt="television service" />
         </ImageServiceWrapper>
-        <DescriptionServiceText>{t('television.serviceDescription')}</DescriptionServiceText>
+        <DescriptionServiceText>{t('service.television.description')}</DescriptionServiceText>
       </ServiceDescriptionWrapper>
     </TelevisionOffersWrapper>
   );

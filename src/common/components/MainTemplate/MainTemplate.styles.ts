@@ -34,6 +34,18 @@ export const ServiceCardWrapper = styled.div`
   align-items: center;
 `;
 
+export const ServiceCardFooter = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const ImageServiceWrapper = styled.div`
+  padding-right: 3rem;
+  width: 90%;
+  height: 30%;
+  text-align: center;
+`;
+
 export const ServiceCardOffer = styled(Card)`
   margin-top: 10rem;
   padding-top: 1rem;
@@ -51,22 +63,23 @@ export const ServiceCardOffer = styled(Card)`
   }
 `;
 
+export const ServiceCardCheckButton = styled(Button)`
+  background-color: ${({ theme }) => theme.colors.primary};
+  border-color: ${({ theme }) => theme.colors.primary};
+  padding: 2rem;
+  font-size: ${({ theme }) => theme.fontSize.xl};
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.secondary} !important;
+    border-color: ${({ theme }) => theme.colors.secondary} !important;
+  }
+`;
+
 export const ServiceCardCheckListText = styled.p`
   padding: 0.5rem;
   color: ${({ theme }) => theme.colors.secondary};
   font-size: ${({ theme }) => theme.fontSize.xl};
   position: relative;
-`;
-
-export const ServiceCardFooter = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
-export const ServiceCardPriceText = styled.span`
-  font-weight: 700;
-  color: ${({ theme }) => theme.colors.primary};
-  font-size: ${({ theme }) => theme.fontSize.xxl};
 `;
 
 export const ServiceCardDescriptionText = styled.p`
@@ -90,23 +103,10 @@ export const DescriptionServiceText = styled.p`
   font-size: ${({ theme }) => theme.fontSize.l};
 `;
 
-export const ServiceCardCheckButton = styled(Button)`
-  background-color: ${({ theme }) => theme.colors.primary};
-  border-color: ${({ theme }) => theme.colors.primary};
-  padding: 2rem;
-  font-size: ${({ theme }) => theme.fontSize.xl};
-
-  &:hover {
-    background-color: ${({ theme }) => theme.colors.secondary} !important;
-    border-color: ${({ theme }) => theme.colors.secondary} !important;
-  }
-`;
-
-export const ImageServiceWrapper = styled.div`
-  padding-right: 3rem;
-  width: 90%;
-  height: 30%;
-  text-align: center;
+export const ServiceCardPriceText = styled.span`
+  font-weight: 700;
+  color: ${({ theme }) => theme.colors.primary};
+  font-size: ${({ theme }) => theme.fontSize.xxl};
 `;
 
 export const ImageService = styled.img`
