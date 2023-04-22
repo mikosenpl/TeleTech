@@ -32,4 +32,44 @@ export const mockCheckListContentService: CheckListContentService[] = [
       { text: 'offer.checkList.fifth' },
     ],
   },
+  {
+    nameOfService: Services.INTERNET,
+    list: [
+      { text: 'offer.checkList.first' },
+      { text: 'offer.checkList.second' },
+      { text: 'offer.checkList.third' },
+      { text: 'offer.checkList.fourth' },
+      { text: 'offer.checkList.fifth' },
+    ],
+  },
+  {
+    nameOfService: Services.DECODER,
+    list: [
+      { text: 'offer.checkList.first' },
+      { text: 'offer.checkList.second' },
+      { text: 'offer.checkList.third' },
+      { text: 'offer.checkList.fourth' },
+      { text: 'offer.checkList.fifth' },
+    ],
+  },
+  {
+    nameOfService: Services.CONTRACT,
+    list: [
+      { text: 'offer.checkList.first' },
+      { text: 'offer.checkList.second' },
+      { text: 'offer.checkList.third' },
+      { text: 'offer.checkList.fourth' },
+      { text: 'offer.checkList.fifth' },
+    ],
+  },
+  {
+    nameOfService: Services.TELEVISION,
+    list: [
+      { text: 'offer.checkList.first' },
+      { text: 'offer.checkList.second' },
+      { text: 'offer.checkList.third' },
+      { text: 'offer.checkList.fourth' },
+      { text: 'offer.checkList.fifth' },
+    ],
+  },
 ];

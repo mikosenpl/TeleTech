@@ -1,11 +1,12 @@
+import DecoderOffers from '../../common/components/DecoderOffers/DecoderOffers';
 import MainTemplate from '../../common/components/MainTemplate/MainTemplate';
 
-const DekoderOffersPage = () => {
+const DecoderOffersPage = () => {
   return (
     <MainTemplate>
-      <DekoderOffersPage />
+      <DecoderOffers />
     </MainTemplate>
   );
 };
 
-export default DekoderOffersPage;
+export default DecoderOffersPage;

@@ -1,9 +1,85 @@
 {
+  "info": {
+    "offerSucess": "Offer ordered:",
+    "service": {
+      "update": "Offer updated"
+    }
+  },
+  "button": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "edit": "Edit",
+    "add": "Add"
+  },
+  "serviceForm": {
+    "header": {
+      "edit": "Editing the service",
+      "add": "Adding a new service"
+    },
+    "label": {
+      "nameOfService": "Service name",
+      "price": "Price per year"
+    },
+    "placeHolder": {
+      "nameOfService": "Service name cannot be changed",
+      "price": "Price in currency"
+    }
+  },
+  "serviceList": {
+    "table": {
+      "header": {
+        "nameOfService": "Service name",
+        "price": "Price per year",
+        "actions": "Actions"
+      }
+    }
+  },
   "sidebar": {
     "home": "Special offers",
     "internet": "Internet",
     "television": "Television",
     "contract": "Subscription",
-    "decoder": "4K Decoder"
+    "decoder": "4K decoder",
+    "newService": "Add a new service!"
+  },
+  "offer": {
+    "check": "Add to selected services",
+    "order": "ORDER",
+    "month": "month",
+    "television": "Platinum TV Package",
+    "internet": "Internet 600 Mb/s",
+    "decoder": "4K SMART TV decoder",
+    "contract": "MAX phone subscription",
+    "internet+television": "Internet 600 Mb/s + Platinum TV Package",
+    "internet+contract": "Internet 600 Mb/s + Subscription",
+    "internet+television+decoder": "Internet 600 Mb/s + Platinum TV Package + FREE decoder",
+    "checkList": {
+      "first": "Internet 600 Mb/s",
+      "second": "139 TV channels",
+      "third": "91 TV SMART GO channels",
+      "fourth": "Intelligent Wi-Fi 6",
+      "fifth": "4K SMART TV decoder"
+    },
+    "sumUp": "Total:",
+    "promotionalOffers": "Promotional discounts:",
+    "summaryList": {
+      "header": "List of selected services:",
+      "empty": "To add a service, go to the page with the offer you are interested in"
+    },
+    "yearPicker": "Choose a year"
+  },
+  "service": {
+    "internet": {
+      "description": "W naszej ofercie otrzymasz szybki Internet domowy dla użytkowników aktywnie korzystających z komputera i urządzeń mobilnych. W zależności od Twoich potrzeb i oczekiwanej szybkości, przygotowaliśmy trzy pakiety Internetu: do 300 Mb/s, do 600 Mb/s, oraz do 1,2 Gb/s. Pakiety dostępne są w dwóch opcjach: umowa na 12 miesięcy lub bez okresu zobowiązania.\n\nDzięki Internetowi światłowodowemu możesz przeglądać strony www i serwisy społecznościowe bez ograniczeń, swobodnie streamingować, oglądać filmy i słuchać muzyki w najwyższej jakości oraz rywalizować w grach online z graczami z całego świata. Dodatkowo to wszystko możesz robić jednocześnie na wielu urządzeniach (smartfonach, tabletach, komputerach, telewizorach czy konsolach). Im szybszy Internet, tym większa stabilność połączenia, mniej zakłóceń, możliwość podłączenia większej ilości urządzeń łączących się w tym samym czasie oraz większa przyjemność z wysokiej jakości usług.\n\nSzybki Internet światłowodowy to najlepsza oferta do domu lub mieszkania. Szybkie i stabilne łącze internetowe od Vectry to nie tylko podstawa multimedialnego centrum rozrywki ale także możliwość nauki i pracy w trybie zdalnym."
+    },
+    "decoder": {
+      "description": "Oferujemy dekoder TV 4K SMART, który zapewni Ci najwyższą jakość obrazu i dźwięku. Nasz produkt umożliwia oglądanie programów telewizyjnych, filmów i seriali w rozdzielczości 4K, a także dostęp do aplikacji internetowych i serwisów streamingowych. Dzięki temu zyskujesz swobodę wyboru treści i czasu ich oglądania, a także możesz korzystać z dodatkowych funkcji, takich jak nagrywanie programów na dysk twardy dekodera. Nasz dekoder TV 4K SMART jest łatwy w obsłudze i posiada wiele przydatnych opcji, takich jak możliwość sterowania głosowego lub obsługi za pomocą smartfona. Nasz produkt jest dostępny w różnych wariantach, abyś mógł wybrać najlepszą opcję dla siebie. Zapewniamy także profesjonalne wsparcie techniczne i szybką obsługę reklamacji. Z dekoderem TV 4K SMART możesz cieszyć się nie tylko rozrywką, ale także edukacją i pracą w domowym zaciszu."
+    },
+    "television": {
+      "description": "Oferujemy bogaty pakiet telewizyjny z 139 kanałami, w tym stacjami Canal+ i Polsat+. Dzięki naszej ofercie możesz cieszyć się szerokim wyborem kanałów tematycznych, filmowych, sportowych i dziecięcych, które dostępne są 24/7. Nasza telewizja to doskonały wybór dla miłośników rozrywki, sportu oraz filmów i seriali z najlepszych produkcji na świecie. Dostarczamy nasz produkt za pośrednictwem satelity, co zapewnia niezawodne i stabilne połączenie. Nasz pakiet telewizyjny oferuje też możliwość nagrywania programów na dysk twardy dekodera oraz oglądania materiałów w jakości HD. Nasza oferta dostępna jest w różnych wariantach, dzięki czemu możesz wybrać najlepszą opcję dla siebie i swojej rodziny. Zapewniamy także profesjonalne wsparcie techniczne i szybką obsługę reklamacji. Z naszą telewizją możesz cieszyć się nie tylko rozrywką, ale także aktualnościami i programami edukacyjnymi dla całej rodziny."
+    },
+    "contract": {
+      "description": "Oferujemy abonament telefoniczny bez ograniczeń, który pozwala Ci na swobodne korzystanie z sieci w Polsce i za granicą. Nasz abonament zapewnia nielimitowany dostęp do internetu, bez limitów prędkości i transferu danych. Dodatkowo, nasza oferta zawiera także nielimitowane rozmowy i SMS-y w kraju oraz do wybranych krajów na całym świecie. Nasz abonament jest dostępny w różnych wariantach, abyś mógł wybrać najlepszą opcję dla siebie. Zapewniamy także bezpłatne usługi dodatkowe, takie jak bezpłatny dostęp do wybranych aplikacji oraz bonusowe GB danych co miesiąc. Nasza oferta obejmuje także pakiet ubezpieczeń dla Twojego telefonu, w tym ochronę przed kradzieżą, zalaniem i uszkodzeniem mechanicznym. Nasz abonament to kompleksowa oferta, która pozwala Ci na swobodne korzystanie z urządzeń mobilnych, bez obaw o dodatkowe koszty. Zapewniamy także profesjonalne wsparcie techniczne i szybką obsługę reklamacji. Wybierając nasz abonament, zyskujesz nie tylko swobodę, ale także bezpieczeństwo i spokój ducha."
+    }
   }
 }

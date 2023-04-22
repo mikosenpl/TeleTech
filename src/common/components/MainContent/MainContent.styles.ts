@@ -1,6 +1,8 @@
 import { Button } from 'primereact/button';
 import { Card } from 'primereact/card';
 import styled from 'styled-components';
+
+// --- main
 export const MainContentWrapper = styled.div`
   width: 80%;
   height: 100%;
@@ -18,9 +20,11 @@ export const OffersWrapper = styled.div`
 `;
 
 export const OfferCenter = styled(Card)`
-  margin-top: 2rem;
+  margin-top: 10rem;
+  padding-top: 1rem;
   width: 25%;
   height: 100%;
+  background-color: ${({ theme }) => theme.colors.tertiary};
   text-align: center;
   position: relative;
 
@@ -33,7 +37,8 @@ export const OfferCenter = styled(Card)`
 `;
 
 export const OfferSides = styled(Card)`
-  margin: 8rem 2rem 0 2rem;
+  margin: 15rem 2rem 0 2rem;
+  padding-top: 1rem;
   width: 25%;
   height: 100%;
   text-align: center;
@@ -50,6 +55,37 @@ export const OfferSides = styled(Card)`
 export const OfferFooter = styled.div`
   display: flex;
   flex-direction: column;
+`;
+
+// --- ---
+// --- text
+export const PriceTextCenter = styled.span`
+  font-weight: 700;
+  color: ${({ theme }) => theme.colors.contrast};
+  font-size: ${({ theme }) => theme.fontSize.xxl};
+`;
+
+export const DescriptionOfferTextCenter = styled.p`
+  font-weight: 700;
+  color: ${({ theme }) => theme.colors.secondary};
+  font-size: ${({ theme }) => theme.fontSize.xl};
+`;
+
+export const CurrencyTextCenter = styled.p`
+  font-weight: 200;
+  color: ${({ theme }) => theme.colors.contrast};
+  font-size: ${({ theme }) => theme.fontSize.m};
+`;
+
+export const CheckButtonCenter = styled(Button)`
+  background-color: ${({ theme }) => theme.colors.primary};
+  border-color: ${({ theme }) => theme.colors.primary};
+  font-size: ${({ theme }) => theme.fontSize.xl};
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.secondary} !important;
+    border-color: ${({ theme }) => theme.colors.secondary} !important;
+  }
 `;
 
 export const PriceText = styled.span`
@@ -70,6 +106,21 @@ export const CurrencyText = styled.p`
   font-size: ${({ theme }) => theme.fontSize.m};
 `;
 
+export const OfferCheckListText = styled.p`
+  padding: 0.5rem;
+  color: ${({ theme }) => theme.colors.secondary};
+  font-size: ${({ theme }) => theme.fontSize.l};
+  position: relative;
+`;
+// --- ---
+// --- ---
+export const OfferCheckListTextCenter = styled.p`
+  padding: 0.5rem;
+  color: ${({ theme }) => theme.colors.contrast};
+  font-size: ${({ theme }) => theme.fontSize.l};
+  position: relative;
+`;
+
 export const CheckButton = styled(Button)`
   background-color: ${({ theme }) => theme.colors.primary};
   border-color: ${({ theme }) => theme.colors.primary};
@@ -79,19 +130,4 @@ export const CheckButton = styled(Button)`
     background-color: ${({ theme }) => theme.colors.secondary} !important;
     border-color: ${({ theme }) => theme.colors.secondary} !important;
   }
-`;
-
-export const StatuteButton = styled(Button)`
-  color: ${({ theme }) => theme.colors.secondary} !important;
-
-  &:hover {
-    background-color: ${({ theme }) => theme.colors.body} !important;
-  }
-`;
-
-export const OfferCheckListText = styled.p`
-  padding: 0.5rem;
-  color: ${({ theme }) => theme.colors.secondary};
-  font-size: ${({ theme }) => theme.fontSize.l};
-  position: relative;
 `;

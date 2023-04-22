@@ -29,16 +29,14 @@ export const LogoImage = styled.img`
 `;
 
 export const MenuWrapper = styled.div`
-  width: 90%;
-  height: 50%;
-  display: flex;
+  width: 100%;
+  height: 75%;
 `;
 
 export const MenuNavigationItemWrapper = styled.ul`
   display: flex;
-  align-items: center;
   flex-direction: column;
-  font-size: ${({ theme }) => theme.fontSize.l};
+  font-size: ${({ theme }) => theme.fontSize.xl};
   color: white;
   font-weight: 700;
 
@@ -69,8 +67,7 @@ export const MenuNavigationItemActive = styled.li`
     right: 0;
     border-style: solid;
     border-width: 12px 25px 12px 0;
-    border-color: transparent ${({ theme }) => theme.colors.primary} transparent
-      transparent;
+    border-color: transparent ${({ theme }) => theme.colors.primary} transparent transparent;
     -webkit-transition: all 0.2s ease-in-out;
     transition: all 0.2s ease-in-out;
   }
