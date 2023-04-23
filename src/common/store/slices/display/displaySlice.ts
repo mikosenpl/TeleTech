@@ -33,7 +33,7 @@ const displaySlice = createSlice({
     setSelectedYear: (state, action) => {
       state.selectedYear = action.payload;
     },
-    setDisplaySelectedService: (state, action: PayloadAction<Service[]>) => {
+    setSelectedService: (state, action: PayloadAction<Service[]>) => {
       const filterService = action.payload.filter((service) => {
         return (
           state.selectedServices.findIndex(
@@ -42,6 +42,11 @@ const displaySlice = createSlice({
         );
       });
       state.selectedServices = [...state.selectedServices, ...filterService];
+    },
+    removeSelectedService: (state, action: PayloadAction<string>) => {
+      state.selectedServices = state.selectedServices.filter(
+        (service) => service.nameOfService !== action.payload
+      );
     },
     addService: (state, action: PayloadAction<Service>) => {
       const { nameOfService } = action.payload;
@@ -67,7 +72,12 @@ const displaySlice = createSlice({
   },
 });
 
-export const { setSelectedYear, setDisplaySelectedService, addService, updateService } =
-  displaySlice.actions;
+export const {
+  setSelectedYear,
+  setSelectedService,
+  removeSelectedService,
+  addService,
+  updateService,
+} = displaySlice.actions;
 
 export default displaySlice.reducer;

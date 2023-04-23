@@ -4,7 +4,7 @@ import { Services } from '../../enums/Services';
 import { mockCheckListContentService } from '../../mocks/checkListContentService';
 import { Service } from '../../models/PriceOfService';
 import { CheckListContentServiceItem } from '../../models/checkListContentService';
-import { setDisplaySelectedService } from '../../store/slices/display/displaySlice';
+import { setSelectedService } from '../../store/slices/display/displaySlice';
 import { RootState } from '../../store/store';
 import {
   ServiceCardDescriptionText,
@@ -45,7 +45,7 @@ const DecoderOffers = () => {
   const handleCheckButtonClick = (service: Service | undefined) => {
     if (service) {
       const selectedService = [...allSelectedService, service];
-      dispatch(setDisplaySelectedService(selectedService));
+      dispatch(setSelectedService(selectedService));
     }
   };
 

@@ -21,7 +21,7 @@ import { InternetOffersWrapper } from './InternetOffers.styles';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
 import InternetImage from '../../assets/icons/internet.png';
-import { setDisplaySelectedService } from '../../store/slices/display/displaySlice';
+import { setSelectedService } from '../../store/slices/display/displaySlice';
 
 const InternetOffers = () => {
   const dispatch = useDispatch();
@@ -45,7 +45,7 @@ const InternetOffers = () => {
   const handleCheckButtonClick = (service: Service | undefined) => {
     if (service) {
       const selectedService = [...allSelectedService, service];
-      dispatch(setDisplaySelectedService(selectedService));
+      dispatch(setSelectedService(selectedService));
     }
   };
 
