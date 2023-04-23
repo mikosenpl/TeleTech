@@ -11,7 +11,8 @@ export interface DisplayState {
   years: number[];
   services: Service[];
   promotions: Promotion[];
-  feedbackMessage?: string;
+  feedbackServiceMessage?: string;
+  feedbackYearMessage?: string;
 }
 
 export const initialDisplayState: DisplayState = {
@@ -22,16 +23,15 @@ export const initialDisplayState: DisplayState = {
   promotions: mockPriceOfSpecialOfferServices,
 };
 
-const isServiceNameUnique = (services: Service[], serviceName: string) => {
-  return services.findIndex((service) => service.nameOfService === serviceName) === -1;
-};
-
 const displaySlice = createSlice({
   name: 'display',
   initialState: initialDisplayState,
   reducers: {
     setSelectedYear: (state, action) => {
       state.selectedYear = action.payload;
+    },
+    addYear: (state, action: PayloadAction<Year>) => {
+      state.years = [...state.years, action.payload];
     },
     setSelectedService: (state, action: PayloadAction<Service[]>) => {
       const filterService = action.payload.filter((service) => {
@@ -49,13 +49,6 @@ const displaySlice = createSlice({
       );
     },
     addService: (state, action: PayloadAction<Service>) => {
-      const { nameOfService } = action.payload;
-
-      if (!isServiceNameUnique(state.services, nameOfService)) {
-        state.feedbackMessage = `Service '${nameOfService}' already exists`;
-        return;
-      }
-      state.feedbackMessage = undefined;
       state.services = [...state.services, action.payload];
     },
     updateService: (
@@ -74,6 +67,7 @@ const displaySlice = createSlice({
 
 export const {
   setSelectedYear,
+  addYear,
   setSelectedService,
   removeSelectedService,
   addService,

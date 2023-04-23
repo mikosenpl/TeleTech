@@ -4,13 +4,15 @@
     "service": {
       "update": "Zaktualizowano ofertę",
       "nameExists": "Usługa o podanej nazwie już istnieje, podaj inną."
-    }
+    },
+    "decoderTVRequired": "Aby dodać dekoder, najpierw dodaj pakiet telewizyjny"
   },
   "button": {
     "save": "Zapisz",
     "cancel": "Anuluj",
     "edit": "Edytuj",
-    "add": "Dodaj"
+    "add": "Dodaj",
+    "addYear": "Dodaj nowy rok!"
   },
   "serviceForm": {
     "header": {
@@ -25,6 +27,17 @@
       "nameOfServiceEdit": "Nazwa usługi nie podlega zmianie",
       "nameOfServiceAdd": "Nazwa usługi",
       "price": "Cena w walucie"
+    }
+  },
+  "yearForm": {
+    "header": {
+      "add": "Dodawanie nowego roku"
+    },
+    "label": {
+      "year": "Rok usługi"
+    },
+    "placeHolder": {
+      "year": "Po dodaniu nowego roku, możliwe będzie dodawanie cen na określony rok"
     }
   },
   "serviceList": {

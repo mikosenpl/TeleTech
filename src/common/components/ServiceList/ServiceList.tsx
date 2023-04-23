@@ -1,12 +1,13 @@
 import { useSelector } from 'react-redux';
 import { PricePerYear, Service } from '../../models/PriceOfService';
 import { RootState } from '../../store/store';
-import { NewServiceWrapper, ServicesTable } from './NewServiceList.styles';
+import { ServicesListWrapper, ServicesTable } from './ServiceList.styles';
 import { Promotion } from '../../models/Promotion';
 import { useTranslation } from 'react-i18next';
 import ServiceForm from '../ServiceForm/ServiceForm';
+import YearForm from '../YearForm/YearForm';
 
-const NewServiceList = () => {
+const ServiceList = () => {
   const { t } = useTranslation();
 
   const allService: Service[] = useSelector((state: RootState) => state.display.services);
@@ -14,13 +15,14 @@ const NewServiceList = () => {
   const allYears: number[] = useSelector((state: RootState) => state.display.years);
 
   return (
-    <NewServiceWrapper>
+    <ServicesListWrapper>
+      <YearForm />
       <ServicesTable>
         <thead>
           <tr>
             <th>{t('serviceList.table.header.nameOfService')}</th>
             {allYears.map((year: number) => {
-              return <th>{`${t('serviceList.table.header.nameOfService')} ${year}`}</th>;
+              return <th key={year}>{`${t('serviceList.table.header.nameOfService')} ${year}`}</th>;
             })}
             <th>{t('serviceList.table.header.actions')}</th>
           </tr>
@@ -28,12 +30,17 @@ const NewServiceList = () => {
         <tbody>
           {allService.map((service: Service) => {
             return (
-              <tr>
+              <tr key={service.nameOfService}>
                 <td>{service.nameOfService}</td>
-                {service.pricePerYear.map((price: PricePerYear) => {
+                {allYears.map((currentYear: number) => {
+                  let priceForCurrentYear = service.pricePerYear?.find(
+                    (price: PricePerYear) => price.year === currentYear
+                  );
                   return (
-                    <td>
-                      {price.price} {price.currency}
+                    <td key={priceForCurrentYear?.year}>
+                      {priceForCurrentYear?.price
+                        ? `${priceForCurrentYear.price} ${priceForCurrentYear.currency}`
+                        : ``}
                     </td>
                   );
                 })}
@@ -50,8 +57,8 @@ const NewServiceList = () => {
           </tr>
         </tbody>
       </ServicesTable>
-    </NewServiceWrapper>
+    </ServicesListWrapper>
   );
 };
 
-export default NewServiceList;
+export default ServiceList;
