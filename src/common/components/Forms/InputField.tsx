@@ -1,8 +1,7 @@
 import { InputText } from 'primereact/inputtext';
 import { classNames } from 'primereact/utils';
-import { Control, Controller, FieldValues, useForm } from 'react-hook-form';
-import { Path } from 'react-router-dom';
-import { InputFieldWrapper } from '../NewService/NewService.styles';
+import { Control, Controller, FieldValues } from 'react-hook-form';
+import { InputFieldWrapper } from '../ServiceForm/ServiceForm.styles';
 
 interface InputFieldProps<T extends FieldValues> {
   control: Control<T>;

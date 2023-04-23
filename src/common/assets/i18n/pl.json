@@ -2,7 +2,8 @@
   "info": {
     "offerSucess": "Zamówiono ofertę:",
     "service": {
-      "update": "Zaktualizowano ofertę"
+      "update": "Zaktualizowano ofertę",
+      "nameExists": "Usługa o podanej nazwie już istnieje, podaj inną."
     }
   },
   "button": {
@@ -21,7 +22,8 @@
       "price": "Cena na rok"
     },
     "placeHolder": {
-      "nameOfService": "Nazwa usługi nie podlega zmianie",
+      "nameOfServiceEdit": "Nazwa usługi nie podlega zmianie",
+      "nameOfServiceAdd": "Nazwa usługi",
       "price": "Cena w walucie"
     }
   },

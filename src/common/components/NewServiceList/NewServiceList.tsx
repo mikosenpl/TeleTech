@@ -3,8 +3,8 @@ import { PricePerYear, Service } from '../../models/PriceOfService';
 import { RootState } from '../../store/store';
 import { NewServiceWrapper, ServicesTable } from './NewServiceList.styles';
 import { Promotion } from '../../models/Promotion';
-import NewService from '../NewService/NewService';
 import { useTranslation } from 'react-i18next';
+import ServiceForm from '../ServiceForm/ServiceForm';
 
 const NewServiceList = () => {
   const { t } = useTranslation();
@@ -38,14 +38,14 @@ const NewServiceList = () => {
                   );
                 })}
                 <td>
-                  <NewService service={service} />
+                  <ServiceForm service={service} />
                 </td>
               </tr>
             );
           })}
           <tr>
             <td>
-              <NewService />
+              <ServiceForm />
             </td>
           </tr>
         </tbody>
