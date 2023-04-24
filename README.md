@@ -1,6 +1,63 @@
-# Getting Started with Create React App
+# Solution created by Michał Kikoła
+Calculator for telecommunication services that allows users to select services, choose a year, and calculate the total cost
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## Table of contents
+
+* [General info](#general-info)
+* [Start using Docker](#start-using-docker)
+* [Structure](#structure)
+* [Configure files](#configure-files)
+* [Available Scripts](#available-scripts)
+
+## General info
+This project was created using technologies such as React.js with Typescript, React Hook Form, Redux, PrimeReact with Styled Component, React Testing Library and many more.
+
+![image](https://user-images.githubusercontent.com/76049970/233921809-c843a2e4-5872-483d-b499-faa67ea9530e.png)
+![image](https://user-images.githubusercontent.com/76049970/233921885-785ced91-0ea0-4fd9-a50d-91b0f95c7323.png)
+![image](https://user-images.githubusercontent.com/76049970/233921979-8f50b837-1bf9-4392-9574-db0d51690cb6.png)
+
+#### Versions:
+Node : v18.12.0
+React : 18.2.0
+React-router-dom : 6.8.2
+
+## Start using Docker
+
+#### Run the developer server:
+
+```bash
+# start client and server
+docker compose -f docker-compose.dev.yml up
+# start client and server in background
+docker compose -f docker-compose.dev.yml up -d
+```
+
+## Structure
+
+```bash
+├───public - all public files, such as pictures and icons.
+├───src
+│   ├───common
+│   │   ├───api - Configuration files, for example, for axios.
+│   │   ├───assets - multimedia files such as photos, translate resources etc.
+│   │   ├───├───styles - theme, and global styles for application
+│   │   ├───components - collection of components, i.e. functions that return a specific part of the application
+│   │   ├───constants - helpers, const types
+│   │   ├───enums - enumeration types
+│   │   ├───mocks - simulated, examples object
+│   │   ├───models - business logic representation
+│   │   ├───providers - context files
+│   │   ├───store - store from redux
+│   │   └───utils - static methods
+│   └───pages - main application files, subpages
+```
+
+## Configure files
+
+* package.json - This file is the heart of any Node project. It records important metadata about a project which is required before publishing to NPM
+* tsconfig.json - Typescript configuration
+* prettierrc and .eslintrc.json - prettier and eslint configuration
 
 ## Available Scripts
 
