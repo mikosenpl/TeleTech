@@ -11,6 +11,8 @@ export interface DisplayState {
   years: number[];
   services: Service[];
   promotions: Promotion[];
+  feedbackServiceMessage?: string;
+  feedbackYearMessage?: string;
 }
 
 export const initialDisplayState: DisplayState = {
@@ -28,7 +30,10 @@ const displaySlice = createSlice({
     setSelectedYear: (state, action) => {
       state.selectedYear = action.payload;
     },
-    setDisplaySelectedService: (state, action: PayloadAction<Service[]>) => {
+    addYear: (state, action: PayloadAction<Year>) => {
+      state.years = [...state.years, action.payload];
+    },
+    setSelectedService: (state, action: PayloadAction<Service[]>) => {
       const filterService = action.payload.filter((service) => {
         return (
           state.selectedServices.findIndex(
@@ -37,6 +42,14 @@ const displaySlice = createSlice({
         );
       });
       state.selectedServices = [...state.selectedServices, ...filterService];
+    },
+    removeSelectedService: (state, action: PayloadAction<string>) => {
+      state.selectedServices = state.selectedServices.filter(
+        (service) => service.nameOfService !== action.payload
+      );
+    },
+    addService: (state, action: PayloadAction<Service>) => {
+      state.services = [...state.services, action.payload];
     },
     updateService: (
       state,
@@ -52,6 +65,13 @@ const displaySlice = createSlice({
   },
 });
 
-export const { setSelectedYear, setDisplaySelectedService, updateService } = displaySlice.actions;
+export const {
+  setSelectedYear,
+  addYear,
+  setSelectedService,
+  removeSelectedService,
+  addService,
+  updateService,
+} = displaySlice.actions;
 
 export default displaySlice.reducer;

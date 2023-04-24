@@ -46,6 +46,11 @@ export const ImageServiceWrapper = styled.div`
   text-align: center;
 `;
 
+export const FieldWrapper = styled.span`
+  display: flex;
+  flex-direction: column;
+`;
+
 export const ServiceCardOffer = styled(Card)`
   margin-top: 10rem;
   padding-top: 1rem;

@@ -4,7 +4,7 @@ import { Services } from '../../enums/Services';
 import { mockCheckListContentService } from '../../mocks/checkListContentService';
 import { Service } from '../../models/PriceOfService';
 import { CheckListContentServiceItem } from '../../models/checkListContentService';
-import { setDisplaySelectedService } from '../../store/slices/display/displaySlice';
+import { setSelectedService } from '../../store/slices/display/displaySlice';
 import { RootState } from '../../store/store';
 import {
   ServiceCardDescriptionText,
@@ -22,10 +22,13 @@ import {
 } from '../MainTemplate/MainTemplate.styles';
 import { DekoderOffersWrapper } from './DecoderOffers.styles';
 import DecoderImage from '../../assets/icons/decoder.png';
+import { Toast } from 'primereact/toast';
+import { useRef } from 'react';
+import { findServiceByName } from '../../utils/unique';
 
 const DecoderOffers = () => {
   const dispatch = useDispatch();
-
+  const toast = useRef<Toast>(null);
   const allSelectedService: Service[] = useSelector(
     (state: RootState) => state.display.selectedServices
   );
@@ -44,8 +47,16 @@ const DecoderOffers = () => {
 
   const handleCheckButtonClick = (service: Service | undefined) => {
     if (service) {
-      const selectedService = [...allSelectedService, service];
-      dispatch(setDisplaySelectedService(selectedService));
+      if (findServiceByName(allSelectedService, Services.TELEVISION)) {
+        const selectedService = [...allSelectedService, service];
+        dispatch(setSelectedService(selectedService));
+      } else {
+        toast.current?.show({
+          severity: 'info',
+          summary: t('info.decoderTVRequired'),
+          life: 3000,
+        });
+      }
     }
   };
 
@@ -71,6 +82,7 @@ const DecoderOffers = () => {
 
   return (
     <DekoderOffersWrapper>
+      <Toast ref={toast} />
       <ServiceCardWrapper>
         <ServiceCardOffer footer={OfferCenterFooter} header={OfferCenterHeader}>
           {DecoderOfferCheckList?.list.map((menuItem: CheckListContentServiceItem) => {

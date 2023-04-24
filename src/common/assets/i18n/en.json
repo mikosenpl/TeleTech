@@ -2,27 +2,42 @@
   "info": {
     "offerSucess": "Offer ordered:",
     "service": {
-      "update": "Offer updated"
-    }
+      "update": "Offer updated",
+      "nameExists": "Service with given name already exists, provide another name."
+    },
+    "decoderTVRequired": "To add a decoder, first add a TV package"
   },
   "button": {
     "save": "Save",
     "cancel": "Cancel",
     "edit": "Edit",
-    "add": "Add"
+    "add": "Add",
+    "addYear": "Add new year!"
   },
   "serviceForm": {
     "header": {
-      "edit": "Editing the service",
-      "add": "Adding a new service"
+      "edit": "Editing service",
+      "add": "Adding new service"
     },
     "label": {
       "nameOfService": "Service name",
       "price": "Price per year"
     },
     "placeHolder": {
-      "nameOfService": "Service name cannot be changed",
+      "nameOfServiceEdit": "Service name cannot be changed",
+      "nameOfServiceAdd": "Service name",
       "price": "Price in currency"
+    }
+  },
+  "yearForm": {
+    "header": {
+      "add": "Adding new year"
+    },
+    "label": {
+      "year": "Service year"
+    },
+    "placeHolder": {
+      "year": "After adding a new year, it will be possible to add prices for a specified year"
     }
   },
   "serviceList": {
@@ -39,32 +54,32 @@
     "internet": "Internet",
     "television": "Television",
     "contract": "Subscription",
-    "decoder": "4K decoder",
-    "newService": "Add a new service!"
+    "decoder": "4K Decoder",
+    "newService": "Edit services!"
   },
   "offer": {
     "check": "Add to selected services",
     "order": "ORDER",
-    "month": "month",
-    "television": "Platinum TV Package",
+    "month": "mo.",
+    "television": "Platinum TV package",
     "internet": "Internet 600 Mb/s",
-    "decoder": "4K SMART TV decoder",
-    "contract": "MAX phone subscription",
-    "internet+television": "Internet 600 Mb/s + Platinum TV Package",
+    "decoder": "SMART TV 4K Decoder",
+    "contract": "MAX Telephone Subscription",
+    "internet+television": "Internet 600 Mb/s + Platinum TV package",
     "internet+contract": "Internet 600 Mb/s + Subscription",
-    "internet+television+decoder": "Internet 600 Mb/s + Platinum TV Package + FREE decoder",
+    "internet+television+decoder": "Internet 600 Mb/s + Platinum TV package + FREE Decoder",
     "checkList": {
       "first": "Internet 600 Mb/s",
       "second": "139 TV channels",
-      "third": "91 TV SMART GO channels",
+      "third": "91 channels in SMART GO TV",
       "fourth": "Intelligent Wi-Fi 6",
-      "fifth": "4K SMART TV decoder"
+      "fifth": "Smart 4K TV Decoder"
     },
     "sumUp": "Total:",
-    "promotionalOffers": "Promotional discounts:",
+    "promotionalOffers": "Applied promotions:",
     "summaryList": {
       "header": "List of selected services:",
-      "empty": "To add a service, go to the page with the offer you are interested in"
+      "empty": "To add a service, go to the subpage with an interesting offer"
     },
     "yearPicker": "Choose a year"
   },

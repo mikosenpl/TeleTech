@@ -2,7 +2,7 @@ import { Button } from 'primereact/button';
 import { Dialog } from 'primereact/dialog';
 import styled from 'styled-components';
 
-export const NewServiceWrapper = styled.div`
+export const ServiceFormWrappers = styled.div`
   width: 80%;
   display: flex;
   align-items: flex-start;
@@ -11,7 +11,7 @@ export const NewServiceWrapper = styled.div`
   border-right: 0.2rem solid ${({ theme }) => theme.colors.tertiary};
 `;
 
-export const NewServiceDialog = styled(Dialog)`
+export const ServiceFormDialog = styled(Dialog)`
   width: 30vw;
 
   .p-dialog-header .p-dialog-title {
@@ -32,39 +32,12 @@ export const NewServiceDialog = styled(Dialog)`
   }
 `;
 
-export const NewServiceDialogMainButton = styled(Button)`
+export const ServiceFormDialogMainButton = styled(Button)`
   background-color: ${({ theme }) => theme.colors.secondary};
   border-color: ${({ theme }) => theme.colors.primary};
   font-size: ${({ theme }) => theme.fontSize.l};
 
   &:hover {
     background-color: ${({ theme }) => theme.colors.primary} !important;
-  }
-`;
-
-export const ServicesTable = styled.table`
-  width: 70%;
-  border-collapse: collapse;
-  margin: 2rem 0;
-  font-size: ${({ theme }) => theme.fontSize.l};
-  border-radius: 5px 5px 0 0;
-  overflow: hidden;
-  box-shadow: 0 0 20px ${({ theme }) => theme.colors.tertiary};
-
-  thead tr {
-    background-color: ${({ theme }) => theme.colors.primary};
-    color: ${({ theme }) => theme.colors.contrast};
-    text-align: left;
-    font-weight: 700;
-  }
-
-  th,
-  td {
-    padding: 1rem 2rem;
-  }
-
-  tbody tr:nth-of-type(even) {
-    background-color: ${({ theme }) => theme.colors.tertiary};
-    color: ${({ theme }) => theme.colors.contrast};
   }
 `;

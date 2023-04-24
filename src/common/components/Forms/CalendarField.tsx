@@ -1,9 +1,9 @@
-import { InputText } from 'primereact/inputtext';
+import { Calendar } from 'primereact/calendar';
 import { classNames } from 'primereact/utils';
 import { Control, Controller, FieldValues } from 'react-hook-form';
 import { FieldWrapper } from '../MainTemplate/MainTemplate.styles';
 
-interface InputFieldProps<T extends FieldValues> {
+interface CalendarFieldProps<T extends FieldValues> {
   control: Control<T>;
   name: string;
   label: string;
@@ -14,7 +14,7 @@ interface InputFieldProps<T extends FieldValues> {
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const InputField = <T extends FieldValues>(props: InputFieldProps<T>) => {
+const CalendarField = <T extends FieldValues>(props: CalendarFieldProps<T>) => {
   return (
     <Controller
       name={props.name as any}
@@ -24,13 +24,14 @@ const InputField = <T extends FieldValues>(props: InputFieldProps<T>) => {
         <>
           <label htmlFor={props.name}>{props.label}</label>
           <FieldWrapper>
-            <InputText
-              id={props.name}
-              value={field.value ?? ''}
-              type={props.type ? props.type : 'text'}
+            <Calendar
+              inputId={field.name}
+              value={field.value}
+              onChange={field.onChange}
+              view="year"
+              dateFormat="yy"
+              minDate={new Date()}
               className={classNames({ 'p-invalid': fieldState.error })}
-              disabled={props.disabled ? props.disabled : false}
-              onChange={(e) => field.onChange(e.target.value)}
             />
             <small id={`${props.name}-help`}>{props.placeHolder}</small>
           </FieldWrapper>
@@ -41,4 +42,4 @@ const InputField = <T extends FieldValues>(props: InputFieldProps<T>) => {
   );
 };
 
-export default InputField;
+export default CalendarField;

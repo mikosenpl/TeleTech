@@ -18,8 +18,7 @@ import { DataView } from 'primereact/dataview';
 import { Button } from 'primereact/button';
 import { useTranslation } from 'react-i18next';
 import { calculateTheTotalPrice } from '../../utils/calculateTheTotalPrice';
-import { Year } from '../../enums/Years';
-import { setSelectedYear } from '../../store/slices/display/displaySlice';
+import { removeSelectedService, setSelectedYear } from '../../store/slices/display/displaySlice';
 import { Promotion } from '../../models/Promotion';
 
 const SummaryField = () => {
@@ -39,6 +38,10 @@ const SummaryField = () => {
     dispatch(setSelectedYear(selectedYear));
   };
 
+  const handleRemoveService = (serviceName: string) => {
+    dispatch(removeSelectedService(serviceName));
+  };
+
   const itemTemplate = (item: Service) => {
     const itemPrice = item.pricePerYear?.find((item) => item.year === yearOffer);
     return (
@@ -56,7 +59,12 @@ const SummaryField = () => {
           </SummaryListItemLeftArea>
         </SummaryListItemLeft>
         <SummaryListItemRight>
-          <Button icon="pi pi-times" severity="danger" aria-label="Cancel" />
+          <Button
+            icon="pi pi-times"
+            severity="danger"
+            aria-label="Cancel"
+            onClick={() => handleRemoveService(item.nameOfService)}
+          />
         </SummaryListItemRight>
       </SummaryListItem>
     );

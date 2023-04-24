@@ -1,6 +1,5 @@
 import { Button } from 'primereact/button';
 import { Dropdown } from 'primereact/dropdown';
-import { PickList } from 'primereact/picklist';
 import styled from 'styled-components';
 
 export const SummaryFieldWrapper = styled.div`
